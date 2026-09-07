@@ -85,7 +85,7 @@ a{ color: inherit; }
 }
 @media (max-width: 780px){ .hero-grid{ grid-template-columns: 1fr; } }
 .hero-visual{ max-width: 240px; margin: 0 auto; }
-.hero-visual svg{ display: block; width: 100%; height: auto; }
+.hero-visual img{ display: block; width: 100%; height: auto; }
 .hero .folio{ color: var(--brass); font-size: 0.9rem; margin: 0 0 18px; }
 .hero h1{
   font-size: clamp(2.1rem, 5vw, 3.1rem); max-width: 16ch;
@@ -120,6 +120,7 @@ a{ color: inherit; }
 .clausula{ display: grid; grid-template-columns: 168px 1fr; gap: 24px; padding: 28px 0; border-top: 1px solid var(--line); }
 .clausula:last-child{ border-bottom: 1px solid var(--line); }
 .clausula .num{ font-family: 'Fraunces', Georgia, serif; font-style: italic; color: var(--brass); font-size: 1.05rem; }
+.clausula-icon{ width: 64px; height: 64px; object-fit: contain; vertical-align: middle; margin-right: 12px; }
 .clausula h3{ font-size: 1.25rem; margin-bottom: 8px; }
 .clausula p{ color: var(--muted); margin: 0; max-width: 56ch; }
 @media (max-width: 620px){ .clausula{ grid-template-columns: 1fr; gap: 6px; } }
@@ -234,20 +235,7 @@ footer strong{ color: var(--ink); font-weight: 600; }
           <a class="btn-text" href="#contacto">Ver otras formas de contacto</a>
         </div>
       </div>
-      <div class="hero-visual"><svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Balanza, símbolo de trato directo">
-  <circle cx="120" cy="120" r="112" fill="#FFFFFF" stroke="#1B1F1C" stroke-width="2"/>
-  <circle cx="120" cy="120" r="98" fill="none" stroke="#B8934A" stroke-width="1.5" stroke-dasharray="2 6"/>
-  <line x1="120" y1="66" x2="120" y2="164" stroke="#1B1F1C" stroke-width="3" stroke-linecap="round"/>
-  <line x1="72" y1="88" x2="168" y2="88" stroke="#1B1F1C" stroke-width="3" stroke-linecap="round"/>
-  <circle cx="120" cy="88" r="5" fill="#B8934A"/>
-  <line x1="76" y1="88" x2="62" y2="126" stroke="#1B1F1C" stroke-width="1.5"/>
-  <line x1="86" y1="88" x2="62" y2="126" stroke="#1B1F1C" stroke-width="1.5"/>
-  <ellipse cx="62" cy="130" rx="24" ry="9" fill="#2F4B3C" stroke="#1B1F1C" stroke-width="2"/>
-  <line x1="164" y1="88" x2="178" y2="126" stroke="#1B1F1C" stroke-width="1.5"/>
-  <line x1="154" y1="88" x2="178" y2="126" stroke="#1B1F1C" stroke-width="1.5"/>
-  <ellipse cx="178" cy="130" rx="24" ry="9" fill="#2F4B3C" stroke="#1B1F1C" stroke-width="2"/>
-  <path d="M100 164 L140 164 L152 186 L88 186 Z" fill="#1B1F1C"/>
-</svg></div>
+      <div class="hero-visual"><img src="./transporte.png" alt="Camión de distribución" width="1254" height="1254"></div>
     </div>
   </section>
 
@@ -259,11 +247,10 @@ footer strong{ color: var(--ink); font-weight: 600; }
     </p>
 
     <div class="clausula">
-      <div class="num">Primera</div>
+      <div class="num"><img class="clausula-icon" src="./vaca.png" alt="" width="64" height="64">Primera</div>
       <div>
-        <h3>Ganado y aves en pie</h3>
-        <p>Compra y venta al mayoreo. Coordinamos entrega directamente con
-        el comprador o vendedor.</p>
+        <h3>Ganado en pie</h3>
+        <p>Compra, venta y engorda.</p>
       </div>
     </div>
 
