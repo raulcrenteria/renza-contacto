@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Renza — Asesoría fiscal y contable</title>
+<meta name="description" content="Renza es la práctica de un Contador Público que ayuda a personas y negocios a regularizar su situación fiscal, elegir el régimen correcto y mantener sus cuentas en orden.">
+<meta property="og:title" content="Renza — Asesoría fiscal y contable">
+<meta property="og:description" content="Cuentas claras antes de cualquier firma. Regularización fiscal, régimen y cumplimiento, explicado en lenguaje simple.">
+<meta property="og:type" content="website">
+<!-- CONFIG: actualiza esta URL cuando el dominio esté apuntando -->
+<meta property="og:url" content="https://renzaservices.com/servicios.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%232F4B3C'/%3E%3Ctext x='50' y='67' font-family='Georgia,serif' font-style='italic' font-size='54' fill='%23FAF8F3' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --bg: #FAF8F3;
+  --ink: #1B1F1C;
+  --muted: #6B6459;
+  --seal: #2F4B3C;
+  --seal-dark: #223a2d;
+  --brass: #B8934A;
+  --line: #DAD4C6;
+  --paper: #FFFFFF;
+  --max: 720px;
+}
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  *{ animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3{
+  font-family: 'Fraunces', Georgia, 'Iowan Old Style', serif;
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0;
+  color: var(--ink);
+}
+a{ color: inherit; }
+.wrap{ max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+.topbar{
+  position: sticky; top: 0;
+  background: rgba(250,248,243,0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+  z-index: 10;
+}
+.topbar .wrap{
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px; max-width: 880px;
+}
+.wordmark{
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.25rem; letter-spacing: 0.01em;
+  text-decoration: none; color: var(--ink);
+}
+.topnav{ display: flex; align-items: center; gap: 24px; }
+.topnav a{ text-decoration: none; color: var(--muted); font-size: 0.95rem; }
+.topnav a:hover{ color: var(--ink); }
+.btn-whatsapp-mini{
+  background: var(--seal); color: var(--paper) !important;
+  padding: 8px 16px; border-radius: 3px; font-size: 0.9rem;
+}
+.btn-whatsapp-mini:hover{ background: var(--seal-dark); }
+@media (max-width: 560px){ .topnav a:not(.btn-whatsapp-mini){ display: none; } }
+
+.hero{ max-width: 880px; margin: 0 auto; padding: 88px 24px 64px; }
+.hero-grid{
+  display: grid; grid-template-columns: 1.3fr 1fr;
+  gap: 40px; align-items: center;
+}
+@media (max-width: 780px){ .hero-grid{ grid-template-columns: 1fr; } }
+.hero-visual{ max-width: 240px; margin: 0 auto; }
+.hero-visual svg{ display: block; width: 100%; height: auto; }
+.hero .folio{ color: var(--brass); font-size: 0.9rem; margin: 0 0 18px; }
+.hero h1{
+  font-size: clamp(2.1rem, 5vw, 3.1rem); max-width: 16ch;
+  opacity: 0; animation: rise 0.7s ease-out forwards;
+}
+.hero p.lead{
+  color: var(--muted); max-width: 46ch; margin: 22px 0 34px;
+  font-size: 1.08rem; opacity: 0; animation: rise 0.7s ease-out 0.12s forwards;
+}
+@keyframes rise{ from{ opacity: 0; transform: translateY(10px); } to{ opacity: 1; transform: translateY(0); } }
+.hero .ctas{ display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-primary{
+  display: inline-block; background: var(--seal); color: var(--paper);
+  text-decoration: none; padding: 13px 24px; border-radius: 3px; font-size: 1rem;
+}
+.btn-primary:hover{ background: var(--seal-dark); }
+.btn-text{
+  display: inline-flex; align-items: center; text-decoration: none;
+  color: var(--ink); padding: 13px 4px; border-bottom: 1px solid var(--ink);
+}
+.btn-text:hover{ color: var(--seal); border-color: var(--seal); }
+
+.crosslink{
+  max-width: 880px; margin: -24px auto 0; padding: 0 24px 8px;
+  color: var(--muted); font-size: 0.95rem;
+}
+.crosslink a{ text-decoration: none; border-bottom: 1px solid var(--brass); color: var(--ink); }
+.crosslink a:hover{ color: var(--seal); border-color: var(--seal); }
+
+.clausulas{ max-width: 880px; margin: 0 auto; padding: 24px 24px 72px; border-top: 1px solid var(--line); }
+.clausulas .kicker{ padding-top: 56px; margin: 0 0 40px; color: var(--muted); max-width: 52ch; }
+.clausula{ display: grid; grid-template-columns: 168px 1fr; gap: 24px; padding: 28px 0; border-top: 1px solid var(--line); }
+.clausula:last-child{ border-bottom: 1px solid var(--line); }
+.clausula .num{ font-family: 'Fraunces', Georgia, serif; font-style: italic; color: var(--brass); font-size: 1.05rem; }
+.clausula h3{ font-size: 1.25rem; margin-bottom: 8px; }
+.clausula p{ color: var(--muted); margin: 0; max-width: 56ch; }
+@media (max-width: 620px){ .clausula{ grid-template-columns: 1fr; gap: 6px; } }
+
+.sobre{ background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.sobre .wrap{ max-width: 880px; padding: 72px 24px; display: grid; grid-template-columns: 96px 1fr; gap: 32px; }
+.seal-mark{
+  width: 72px; height: 72px; border-radius: 50%; border: 1.5px solid var(--brass);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', Georgia, serif; font-style: italic; font-size: 1.6rem; color: var(--brass);
+}
+.sobre h2{ font-size: 1.6rem; margin-bottom: 16px; }
+.sobre p{ color: var(--muted); max-width: 58ch; }
+.sobre p + p{ margin-top: 14px; }
+@media (max-width: 620px){ .sobre .wrap{ grid-template-columns: 1fr; } }
+
+.contacto{ max-width: 720px; margin: 0 auto; padding: 72px 24px 40px; }
+.contacto h2{ font-size: 1.8rem; margin-bottom: 12px; }
+.contacto p.lead{ color: var(--muted); margin: 0 0 36px; max-width: 50ch; }
+.contact-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+@media (max-width: 620px){ .contact-grid{ grid-template-columns: 1fr; } }
+.direct-line{ padding-top: 4px; }
+.direct-line a{ display: block; text-decoration: none; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.direct-line a strong{ display: block; font-size: 1rem; }
+.direct-line a span{ color: var(--muted); font-size: 0.92rem; }
+.direct-line a:hover strong{ color: var(--seal); }
+
+form.msg{ display: flex; flex-direction: column; gap: 14px; }
+form.msg label{ font-size: 0.85rem; color: var(--muted); }
+form.msg input, form.msg textarea{
+  font-family: inherit; font-size: 1rem; padding: 10px 0; border: none;
+  border-bottom: 1px solid var(--line); background: transparent; color: var(--ink);
+  outline: none; width: 100%;
+}
+form.msg input:focus, form.msg textarea:focus{ border-bottom-color: var(--seal); }
+form.msg textarea{ resize: vertical; min-height: 84px; }
+form.msg button{
+  align-self: flex-start; margin-top: 8px; background: var(--seal); color: var(--paper);
+  border: none; padding: 12px 22px; border-radius: 3px; font-size: 0.98rem;
+  cursor: pointer; font-family: inherit;
+}
+form.msg button:hover{ background: var(--seal-dark); }
+form.msg button:disabled{ opacity: 0.6; cursor: default; }
+.form-status{ font-size: 0.92rem; margin: 4px 0 0; min-height: 1.2em; }
+.form-status.success{ color: var(--seal); }
+.form-status.error{ color: #9B4444; }
+form.msg button:focus-visible, a:focus-visible, input:focus-visible,
+textarea:focus-visible, .switch-panel:focus-visible{
+  outline: 2px solid var(--seal); outline-offset: 2px;
+}
+
+footer{ border-top: 1px solid var(--line); padding: 32px 24px 48px; }
+footer .wrap{
+  max-width: 880px; display: flex; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; font-size: 0.82rem; color: var(--muted);
+}
+footer strong{ color: var(--ink); font-weight: 600; }
+
+.hub{ max-width: 960px; margin: 0 auto; padding: 96px 24px 88px; }
+.hub-intro{ max-width: 640px; }
+.hub-intro .folio{ color: var(--brass); font-size: 0.9rem; margin: 0 0 16px; }
+.hub-intro h1{
+  font-size: clamp(2rem, 5vw, 2.8rem); max-width: 17ch;
+  opacity: 0; animation: rise 0.7s ease-out forwards;
+}
+.hub-intro p.lead{
+  color: var(--muted); max-width: 48ch; margin: 20px 0 0;
+  font-size: 1.05rem; opacity: 0; animation: rise 0.7s ease-out 0.12s forwards;
+}
+.switch{ display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 56px; }
+@media (max-width: 640px){ .switch{ grid-template-columns: 1fr; } }
+.switch-panel{
+  display: flex; flex-direction: column; justify-content: flex-start;
+  text-decoration: none; color: var(--ink); border: 1px solid var(--line);
+  border-radius: 4px; background: var(--paper); padding: 32px 28px;
+  min-height: 220px; transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.switch-panel:hover{ border-color: var(--seal); transform: translateY(-2px); }
+.switch-icon{ width: 56px; height: 56px; margin-bottom: 18px; }
+.switch-icon svg{ display: block; width: 100%; height: 100%; }
+.switch-label{ font-family: 'Fraunces', Georgia, serif; font-size: 1.7rem; margin-bottom: 10px; }
+.switch-desc{ color: var(--muted); font-size: 0.98rem; max-width: 34ch; }
+
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a href="index.html" class="wordmark">Renza</a>
+    <nav class="topnav">
+      <a href="distribucion.html">Distribución</a>
+      <a href="#sobre">Sobre Renza</a>
+      <a class="btn-whatsapp-mini" href="#" data-wa="Hola, quiero platicar sobre mi situación fiscal">WhatsApp</a>
+    </nav>
+  </div>
+</div>
+
+<main>
+
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <p class="folio">Renza · asesoría fiscal y contable</p>
+        <h1>Cuentas claras antes de cualquier firma.</h1>
+        <p class="lead">
+          Trabajo con personas y negocios que están regularizando su situación
+          ante el SAT, cambiando de régimen o necesitan que alguien revise los
+          números antes de decidir. Sin trámites a medias, sin letras chiquitas.
+        </p>
+        <div class="ctas">
+          <a class="btn-primary" href="#" data-wa="Hola, quiero platicar sobre mi situación fiscal">Escríbeme por WhatsApp</a>
+          <a class="btn-text" href="#contacto">Ver otras formas de contacto</a>
+        </div>
+      </div>
+      <div class="hero-visual"><svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Documento revisado y sellado">
+  <circle cx="120" cy="120" r="112" fill="#FFFFFF" stroke="#1B1F1C" stroke-width="2"/>
+  <circle cx="120" cy="120" r="98" fill="none" stroke="#B8934A" stroke-width="1.5" stroke-dasharray="2 6"/>
+  <path d="M84 60 H146 L164 78 V180 H84 Z" fill="#FFFFFF" stroke="#1B1F1C" stroke-width="2"/>
+  <path d="M146 60 L146 78 L164 78 Z" fill="#DAD4C6" stroke="#1B1F1C" stroke-width="1.5" stroke-linejoin="round"/>
+  <line x1="96" y1="96" x2="150" y2="96" stroke="#6B6459" stroke-width="2" stroke-linecap="round"/>
+  <line x1="96" y1="112" x2="150" y2="112" stroke="#6B6459" stroke-width="2" stroke-linecap="round"/>
+  <line x1="96" y1="128" x2="150" y2="128" stroke="#6B6459" stroke-width="2" stroke-linecap="round"/>
+  <line x1="96" y1="144" x2="128" y2="144" stroke="#6B6459" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="158" cy="172" r="34" fill="none" stroke="#B8934A" stroke-width="1.5" stroke-dasharray="2 5"/>
+  <circle cx="158" cy="172" r="26" fill="#2F4B3C" stroke="#1B1F1C" stroke-width="2"/>
+  <path d="M147 172 L155 180 L171 162" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></div>
+    </div>
+  </section>
+
+  <section class="clausulas" id="servicios">
+    <p class="kicker">
+      Cuatro cosas resuelven la mayoría de las situaciones que llegan a mi
+      escritorio. Si la tuya no está aquí, probablemente igual la podamos
+      revisar.
+    </p>
+
+    <div class="clausula">
+      <div class="num">Primera</div>
+      <div>
+        <h3>Regularización fiscal</h3>
+        <p>Diagnóstico de tu RFC, régimen, CFDI y obligaciones pendientes
+        ante el SAT — explicado en lenguaje simple, sin jerga innecesaria.</p>
+      </div>
+    </div>
+
+    <div class="clausula">
+      <div class="num">Segunda</div>
+      <div>
+        <h3>Elección y optimización de régimen</h3>
+        <p>Análisis entre RESICO, personas físicas y morales para pagar lo
+        que corresponde — ni más, ni menos — y evitar sorpresas después.</p>
+      </div>
+    </div>
+
+    <div class="clausula">
+      <div class="num">Tercera</div>
+      <div>
+        <h3>Cumplimiento bancario y documental</h3>
+        <p>Estructura de cuentas, CFDI y respaldo documental para que tus
+        movimientos bancarios coincidan con lo que declaras.</p>
+      </div>
+    </div>
+
+    <div class="clausula">
+      <div class="num">Cuarta</div>
+      <div>
+        <h3>Constitución de empresas</h3>
+        <p>Trámite de tu sociedad — SAS u otro régimen societario — desde el
+        acta constitutiva hasta tu primera declaración.</p>
+      </div>
+    </div>
+  </section>
+
+  <p class="crosslink">¿Buscas comprar o vender al mayoreo? <a href="distribucion.html">Conoce Distribución</a>.</p>
+
+  <section class="sobre" id="sobre">
+    <div class="wrap">
+      <div class="seal-mark">R</div>
+      <div>
+        <h2>Sobre Renza</h2>
+        <p>
+          Renza es la práctica de Raúl Calixto Rentería Coronado, Contador
+          Público con cédula profesional. Opera bajo Renza Comercializadora
+          Distribución y Servicios, S.A.S. de C.V.
+        </p>
+        <p>
+          La idea detrás de Renza es simple: revisar los números antes de
+          que alguien más tenga que hacerlo por ti — un banco, un cliente o
+          el SAT.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contacto" id="contacto">
+    <h2>Contacto</h2>
+    <p class="lead">Cuéntame brevemente tu situación y te respondo con los siguientes pasos.</p>
+
+    <div class="contact-grid">
+      <div class="direct-line">
+        <a href="#" data-wa="Hola, quiero platicar sobre mi situación fiscal">
+          <strong>WhatsApp</strong>
+          <span>Respuesta más rápida</span>
+        </a>
+        <a href="#" data-email-link>
+          <strong>Correo</strong>
+          <span data-email-text></span>
+        </a>
+      </div>
+
+      <form class="msg" id="contactForm" action="https://formspree.io/f/xljeplqq" method="POST">
+        <input type="hidden" name="_subject" value="Contacto desde renzaservices.com — Servicios">
+        <div>
+          <label for="nombre">Nombre</label><br>
+          <input id="nombre" name="nombre" type="text" required>
+        </div>
+        <div>
+          <label for="correo">Correo</label><br>
+          <input id="correo" name="correo" type="email" required>
+        </div>
+        <div>
+          <label for="mensaje">Mensaje</label><br>
+          <textarea id="mensaje" name="mensaje" required></textarea>
+        </div>
+        <button type="submit">Enviar</button>
+        <p class="form-status" id="formStatus" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <strong>Renza Comercializadora Distribución y Servicios,</strong> S.A.S. de C.V.<br>
+      RFC RCD240412FJ5 · Coyoacán, Ciudad de México
+    </div>
+    <div>© <span id="year"></span> Renza</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // CONFIG: número en formato 52XXXXXXXXXX (sin espacios, signos ni "+")
+  // CONFIG: correo real que quieras publicar
+  var CONFIG = {
+    whatsapp: '528341158144',
+    email: 'contacto@renzaservices.com'
+  };
+  function waLink(mensaje){
+    return 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(mensaje);
+  }
+  document.querySelectorAll('[data-wa]').forEach(function(el){
+    el.href = waLink(el.getAttribute('data-wa'));
+    el.target = '_blank';
+    el.rel = 'noopener';
+  });
+  document.querySelectorAll('[data-email-link]').forEach(function(el){
+    el.href = 'mailto:' + CONFIG.email;
+  });
+  document.querySelectorAll('[data-email-text]').forEach(function(el){
+    el.textContent = CONFIG.email;
+  });
+  var yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  var form = document.getElementById('contactForm');
+  var statusEl = document.getElementById('formStatus');
+  if (form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var btn = form.querySelector('button[type="submit"]');
+      var nombre = document.getElementById('nombre').value;
+      var correo = document.getElementById('correo').value;
+      var mensaje = document.getElementById('mensaje').value;
+      statusEl.textContent = '';
+      statusEl.className = 'form-status';
+      btn.disabled = true;
+      btn.textContent = 'Enviando…';
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function(response){
+        btn.disabled = false;
+        btn.textContent = 'Enviar';
+        if (response.ok){
+          form.reset();
+          statusEl.textContent = 'Gracias, ' + nombre + ' — tu mensaje quedó enviado. Te respondo pronto.';
+          statusEl.className = 'form-status success';
+        } else {
+          throw new Error('respuesta no ok');
+        }
+      }).catch(function(){
+        btn.disabled = false;
+        btn.textContent = 'Enviar';
+        statusEl.textContent = 'No se pudo enviar. Escríbeme mejor por WhatsApp o a ' + CONFIG.email + '.';
+        statusEl.className = 'form-status error';
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>
