@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Renza — Distribución al mayoreo</title>
-<meta name="description" content="Compra y venta al mayoreo de ganado y aves, equipo y material eléctrico, y otros bienes bajo pedido. Trato directo con Renza Comercializadora Distribución y Servicios.">
-<meta property="og:title" content="Renza — Distribución al mayoreo">
-<meta property="og:description" content="Ganado, equipo y bienes al mayoreo. Trato directo, sin intermediarios.">
+<title>Renza | Comercialización y gestión de suministro</title>
+<meta name="description" content="Comercialización, intermediación y gestión de suministro de bienes para empresas y operaciones específicas.">
+<meta property="og:title" content="Renza | Comercialización y gestión de suministro">
+<meta property="og:description" content="Conectamos necesidades de compra con oportunidades de suministro.">
 <meta property="og:type" content="website">
 <!-- CONFIG: actualiza esta URL cuando el dominio esté apuntando -->
 <meta property="og:url" content="https://renzaservices.com/distribucion.html">
@@ -85,7 +85,7 @@ a{ color: inherit; }
 }
 @media (max-width: 780px){ .hero-grid{ grid-template-columns: 1fr; } }
 .hero-visual{ max-width: 240px; margin: 0 auto; }
-.hero-visual img{ display: block; width: 100%; height: auto; }
+.hero-visual svg{ display: block; width: 100%; height: auto; }
 .hero .folio{ color: var(--brass); font-size: 0.9rem; margin: 0 0 18px; }
 .hero h1{
   font-size: clamp(2.1rem, 5vw, 3.1rem); max-width: 16ch;
@@ -120,7 +120,6 @@ a{ color: inherit; }
 .clausula{ display: grid; grid-template-columns: 168px 1fr; gap: 24px; padding: 28px 0; border-top: 1px solid var(--line); }
 .clausula:last-child{ border-bottom: 1px solid var(--line); }
 .clausula .num{ font-family: 'Fraunces', Georgia, serif; font-style: italic; color: var(--brass); font-size: 1.05rem; }
-.clausula-icon{ width: 64px; height: 64px; object-fit: contain; vertical-align: middle; margin-right: 12px; }
 .clausula h3{ font-size: 1.25rem; margin-bottom: 8px; }
 .clausula p{ color: var(--muted); margin: 0; max-width: 56ch; }
 @media (max-width: 620px){ .clausula{ grid-template-columns: 1fr; gap: 6px; } }
@@ -150,12 +149,12 @@ a{ color: inherit; }
 
 form.msg{ display: flex; flex-direction: column; gap: 14px; }
 form.msg label{ font-size: 0.85rem; color: var(--muted); }
-form.msg input, form.msg textarea{
+form.msg input, form.msg select, form.msg textarea{
   font-family: inherit; font-size: 1rem; padding: 10px 0; border: none;
   border-bottom: 1px solid var(--line); background: transparent; color: var(--ink);
   outline: none; width: 100%;
 }
-form.msg input:focus, form.msg textarea:focus{ border-bottom-color: var(--seal); }
+form.msg input:focus, form.msg select:focus, form.msg textarea:focus{ border-bottom-color: var(--seal); }
 form.msg textarea{ resize: vertical; min-height: 84px; }
 form.msg button{
   align-self: flex-start; margin-top: 8px; background: var(--seal); color: var(--paper);
@@ -168,7 +167,7 @@ form.msg button:disabled{ opacity: 0.6; cursor: default; }
 .form-status.success{ color: var(--seal); }
 .form-status.error{ color: #9B4444; }
 form.msg button:focus-visible, a:focus-visible, input:focus-visible,
-textarea:focus-visible, .switch-panel:focus-visible{
+select:focus-visible, textarea:focus-visible, .switch-panel:focus-visible{
   outline: 2px solid var(--seal); outline-offset: 2px;
 }
 
@@ -212,9 +211,9 @@ footer strong{ color: var(--ink); font-weight: 600; }
   <div class="wrap">
     <a href="index.html" class="wordmark">Renza</a>
     <nav class="topnav">
-      <a href="servicios.html">Servicios</a>
+      <a href="servicios.html">Consultoría</a>
       <a href="servicios.html#sobre">Sobre Renza</a>
-      <a class="btn-whatsapp-mini" href="#" data-wa="Hola, quiero información sobre distribución de mercancía">WhatsApp</a>
+      <a class="btn-whatsapp-mini" href="#" data-wa="Hola, quiero consultar una operación comercial">WhatsApp</a>
     </nav>
   </div>
 </div>
@@ -224,64 +223,76 @@ footer strong{ color: var(--ink); font-weight: 600; }
   <section class="hero">
     <div class="hero-grid">
       <div class="hero-text">
-        <p class="folio">Renza · distribución</p>
-        <h1>Ganado, equipo y bienes al mayoreo — trato directo.</h1>
+        <p class="folio">Renza · comercialización</p>
+        <h1>Conectamos necesidades de compra con oportunidades de suministro.</h1>
         <p class="lead">
-          Compra, venta y distribución al mayoreo, sin intermediarios que
-          compliquen el precio o el plazo de entrega.
+          Apoyo a empresas y compradores en la búsqueda, comercialización y
+          gestión de suministro de bienes, coordinando oportunidades con
+          proveedores y contrapartes según cada operación.
         </p>
         <div class="ctas">
-          <a class="btn-primary" href="#" data-wa="Hola, quiero información sobre distribución de mercancía">Escríbeme por WhatsApp</a>
-          <a class="btn-text" href="#contacto">Ver otras formas de contacto</a>
+          <a class="btn-primary" href="#" data-wa="Hola, quiero consultar una operación comercial">Consultar una operación</a>
+          <a class="btn-text" href="#como-trabajamos">Ver cómo trabajamos</a>
         </div>
       </div>
-      <div class="hero-visual"><img src="./transporte.png" alt="Camión de distribución" width="1254" height="1254"></div>
+      <div class="hero-visual"><svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Proveedor, Renza y comprador conectados en una operación comercial">
+  <circle cx="120" cy="120" r="112" fill="#FFFFFF" stroke="#1B1F1C" stroke-width="2"/>
+  <circle cx="120" cy="120" r="98" fill="none" stroke="#B8934A" stroke-width="1.5" stroke-dasharray="2 6"/>
+  <line x1="78" y1="120" x2="106" y2="120" stroke="#1B1F1C" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M98 113 L106 120 L98 127" fill="none" stroke="#B8934A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="134" y1="120" x2="162" y2="120" stroke="#1B1F1C" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M154 113 L162 120 L154 127" fill="none" stroke="#B8934A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="48" y="101" width="30" height="38" rx="2" fill="#FFFFFF" stroke="#1B1F1C" stroke-width="2"/>
+  <path d="M48 111 L63 119 L78 111" fill="none" stroke="#B8934A" stroke-width="2" stroke-linejoin="round"/>
+  <circle cx="120" cy="120" r="22" fill="#2F4B3C" stroke="#1B1F1C" stroke-width="2"/>
+  <text x="120" y="127" fill="#FFFFFF" font-family="Georgia, serif" font-style="italic" font-size="20" text-anchor="middle">R</text>
+  <rect x="162" y="101" width="30" height="38" rx="2" fill="#FFFFFF" stroke="#1B1F1C" stroke-width="2"/>
+  <path d="M162 111 L177 119 L192 111" fill="none" stroke="#B8934A" stroke-width="2" stroke-linejoin="round"/>
+</svg></div>
     </div>
   </section>
 
-  <section class="clausulas" id="lineas">
-    <p class="kicker">
-      Estas son las líneas que manejamos hoy.
-      <!-- CONFIG: ajusta volúmenes mínimos, zonas de entrega o marcas
-           específicas conforme los vayas definiendo. -->
-    </p>
+  <section class="clausulas" id="como-trabajamos">
+    <p class="kicker">Cómo trabajamos</p>
 
     <div class="clausula">
-      <div class="num"><img class="clausula-icon" src="./vaca.png" alt="" width="64" height="64">Primera</div>
+      <div class="num">Primera</div>
       <div>
-        <h3>Ganado en pie</h3>
-        <p>Compra, venta y engorda.</p>
+        <h3>Búsqueda y abastecimiento</h3>
+        <p>Identificamos opciones de suministro según producto, volumen,
+        ubicación y condiciones requeridas por el comprador.</p>
       </div>
     </div>
 
     <div class="clausula">
       <div class="num">Segunda</div>
       <div>
-        <h3>Equipo y material eléctrico</h3>
-        <p>Distribución al mayoreo para negocios e instaladores. Pregunta
-        por disponibilidad y precio por volumen.</p>
+        <h3>Comercialización e intermediación</h3>
+        <p>Conectamos compradores y proveedores cuando existe una oportunidad
+        comercial viable, apoyando en la definición de condiciones, cantidades
+        y alcance de la operación.</p>
       </div>
     </div>
 
     <div class="clausula">
       <div class="num">Tercera</div>
       <div>
-        <h3>Bienes por encargo</h3>
-        <p>¿Buscas algo distinto? Cuéntame qué necesitas y reviso si lo
-        podemos conseguir.</p>
+        <h3>Operaciones por encargo</h3>
+        <p>Si buscas un producto o necesitas colocar mercancía, revisamos el caso,
+        la disponibilidad y las alternativas antes de plantear una operación.</p>
       </div>
     </div>
   </section>
 
-  <p class="crosslink">¿Necesitas regularizar o llevar tu contabilidad? <a href="servicios.html">Conoce Servicios</a>.</p>
+  <p class="crosslink">¿Necesitas apoyo financiero, fiscal o de rentabilidad para tu empresa? <a href="servicios.html">Conoce Consultoría</a>.</p>
 
   <section class="contacto" id="contacto">
-    <h2>Contacto</h2>
-    <p class="lead">Cuéntame qué buscas comprar o vender y te respondo con precio y disponibilidad.</p>
+    <h2>Consultar una operación</h2>
+    <p class="lead">Cuéntame qué buscas comprar, vender o conseguir y revisamos si existe una oportunidad comercial viable.</p>
 
     <div class="contact-grid">
       <div class="direct-line">
-        <a href="#" data-wa="Hola, quiero información sobre distribución de mercancía">
+        <a href="#" data-wa="Hola, quiero consultar una operación comercial">
           <strong>WhatsApp</strong>
           <span>Respuesta más rápida</span>
         </a>
@@ -292,9 +303,9 @@ footer strong{ color: var(--ink); font-weight: 600; }
       </div>
 
       <form class="msg" id="contactForm" action="https://formspree.io/f/xljeplqq" method="POST">
-        <input type="hidden" name="_subject" value="Contacto desde renzaservices.com — Distribución">
+        <input type="hidden" name="_subject" value="Contacto desde renzaservices.com — Comercialización">
         <div>
-          <label for="nombre">Nombre</label><br>
+          <label for="nombre">Nombre / Razón Social</label><br>
           <input id="nombre" name="nombre" type="text" required>
         </div>
         <div>
@@ -302,10 +313,25 @@ footer strong{ color: var(--ink); font-weight: 600; }
           <input id="correo" name="correo" type="email" required>
         </div>
         <div>
-          <label for="mensaje">Mensaje</label><br>
-          <textarea id="mensaje" name="mensaje" placeholder="Qué buscas, cantidad y zona de entrega" required></textarea>
+          <label for="telefono">Teléfono / WhatsApp</label><br>
+          <input id="telefono" name="telefono" type="tel">
         </div>
-        <button type="submit">Enviar</button>
+        <div>
+          <label for="tipo_operacion">Tipo de operación</label><br>
+          <select id="tipo_operacion" name="tipo_operacion" required>
+            <option value="" selected disabled hidden></option>
+            <option value="Comprar">Comprar</option>
+            <option value="Vender">Vender</option>
+            <option value="Buscar proveedor">Buscar proveedor</option>
+            <option value="Buscar comprador">Buscar comprador</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+        <div>
+          <label for="mensaje">¿Qué necesitas?</label><br>
+          <textarea id="mensaje" name="mensaje" placeholder="Producto, cantidad aproximada, ubicación y cualquier condición relevante." required></textarea>
+        </div>
+        <button type="submit">Consultar operación</button>
         <p class="form-status" id="formStatus" aria-live="polite"></p>
       </form>
     </div>
@@ -364,7 +390,7 @@ footer strong{ color: var(--ink); font-weight: 600; }
         headers: { 'Accept': 'application/json' }
       }).then(function(response){
         btn.disabled = false;
-        btn.textContent = 'Enviar';
+        btn.textContent = 'Consultar operación';
         if (response.ok){
           form.reset();
           statusEl.textContent = 'Gracias, ' + nombre + ' — tu mensaje quedó enviado. Te respondo pronto.';
@@ -374,7 +400,7 @@ footer strong{ color: var(--ink); font-weight: 600; }
         }
       }).catch(function(){
         btn.disabled = false;
-        btn.textContent = 'Enviar';
+        btn.textContent = 'Consultar operación';
         statusEl.textContent = 'No se pudo enviar. Escríbeme mejor por WhatsApp o a ' + CONFIG.email + '.';
         statusEl.className = 'form-status error';
       });
