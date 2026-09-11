@@ -134,6 +134,21 @@ a{ color: inherit; }
   .paso{ padding-bottom: 4px; border-bottom: 1px solid var(--line); margin-bottom: 12px; }
 }
 
+.panorama{ max-width: 880px; margin: 0 auto; padding: 56px 24px 64px; }
+.panorama-head{ max-width: 680px; margin-bottom: 24px; }
+.panorama-kicker{
+  font-family: 'Fraunces', Georgia, serif; font-style: italic;
+  color: var(--brass); margin: 0 0 10px; font-size: 1rem;
+}
+.panorama-title{ font-size: clamp(1.7rem, 4vw, 2.2rem); margin-bottom: 14px; }
+.panorama-lead{ color: var(--muted); margin: 0; max-width: 62ch; }
+.panorama-frame{
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: 6px; overflow: hidden;
+}
+.panorama-frame img{ display: block; width: 100%; height: auto; }
+.panorama-note{ color: var(--muted); font-size: 0.88rem; margin: 12px 0 0; }
+
 .experiencia{ max-width: 880px; margin: 0 auto; padding: 8px 24px 64px; }
 .experiencia-box{
   border: 1px solid var(--line); border-radius: 4px;
@@ -318,6 +333,18 @@ footer strong{ color: var(--ink); font-weight: 600; }
         <p>Seguimiento mensual o por proyecto, según lo que tu negocio necesite.</p>
       </div>
     </div>
+  </section>
+
+  <section class="panorama">
+    <div class="panorama-head">
+      <p class="panorama-kicker">Panorama financiero</p>
+      <h2 class="panorama-title">Así se ve una operación cuando ya puede leerse con claridad.</h2>
+      <p class="panorama-lead">Estructuramos información financiera, fiscal y operativa para que dirección pueda entender ingresos, costos, margen, flujo y focos de atención sin depender de hojas sueltas o información fragmentada.</p>
+    </div>
+    <div class="panorama-frame">
+      <img src="./panorama-financiero.png" alt="Panorama financiero con indicadores de ingresos, costos, margen y flujo">
+    </div>
+    <p class="panorama-note">Ejemplo ilustrativo del tipo de información que puede ordenarse para análisis, control y toma de decisiones.</p>
   </section>
 
   <section class="clausulas" id="servicios">
