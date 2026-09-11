@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Renza — Asesoría fiscal y contable</title>
-<meta name="description" content="Renza es propiedad de Raúl Rentería, asesor fiscal y financiero con cédula profesional, y opera bajo Renza Comercializadora Distribución y Servicios, S.A.S. de C.V.">
-<meta property="og:title" content="Renza — Asesoría fiscal y contable">
-<meta property="og:description" content="Cuentas claras antes de cualquier firma. Regularización fiscal, régimen y cumplimiento, explicado en lenguaje simple.">
+<title>Renza | Consultoría financiera y fiscal</title>
+<meta name="description" content="Consultoría financiera y fiscal para empresas: estrategia fiscal, análisis de rentabilidad y costos, ordenamiento administrativo, control financiero y automatización de información.">
+<meta property="og:title" content="Renza | Consultoría financiera y fiscal">
+<meta property="og:description" content="Orden financiero, estrategia fiscal y mejores decisiones de negocio.">
 <meta property="og:type" content="website">
 <!-- CONFIG: actualiza esta URL cuando el dominio esté apuntando -->
 <meta property="og:url" content="https://renzaservices.com/servicios.html">
@@ -115,6 +115,46 @@ a{ color: inherit; }
 .crosslink a{ text-decoration: none; border-bottom: 1px solid var(--brass); color: var(--ink); }
 .crosslink a:hover{ color: var(--seal); border-color: var(--seal); }
 
+.proceso{ max-width: 880px; margin: 0 auto; padding: 0 24px 8px; }
+.proceso-row{ display: flex; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+.paso{ flex: 1 1 160px; min-width: 140px; }
+.paso-num{
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 1px solid var(--brass); color: var(--brass);
+  font-family: 'Fraunces', Georgia, serif; font-style: italic; font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+.paso h4{ font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 1.05rem; margin: 0 0 6px; }
+.paso p{ color: var(--muted); font-size: 0.9rem; margin: 0; }
+.paso-flecha{ color: var(--line); font-size: 1.3rem; padding-top: 6px; }
+@media (max-width: 780px){
+  .proceso-row{ flex-direction: column; }
+  .paso-flecha{ display: none; }
+  .paso{ padding-bottom: 4px; border-bottom: 1px solid var(--line); margin-bottom: 12px; }
+}
+
+.experiencia{ max-width: 880px; margin: 0 auto; padding: 8px 24px 64px; }
+.experiencia-box{
+  border: 1px solid var(--line); border-radius: 4px;
+  background: var(--paper); padding: 32px 28px;
+}
+.experiencia-label{
+  font-family: 'Fraunces', Georgia, serif; font-style: italic;
+  color: var(--brass); margin: 0 0 12px; font-size: 1rem;
+}
+.experiencia-box p{ color: var(--ink); margin: 0 0 14px; line-height: 1.6; }
+.experiencia-nota{ color: var(--muted) !important; font-size: 0.88rem; margin-bottom: 0 !important; font-style: italic; }
+
+.casos{ max-width: 880px; margin: 0 auto; padding: 8px 24px 64px; }
+.casos > p.kicker{ color: var(--muted); max-width: 52ch; margin: 0 0 24px; }
+.casos-list{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.casos-list li{
+  padding-left: 18px; border-left: 2px solid var(--brass);
+  font-family: 'Fraunces', Georgia, serif; font-style: italic;
+  color: var(--ink); font-size: 1.05rem; line-height: 1.5;
+}
+
 .clausulas{ max-width: 880px; margin: 0 auto; padding: 24px 24px 72px; border-top: 1px solid var(--line); }
 .clausulas .kicker{ padding-top: 56px; margin: 0 0 40px; color: var(--muted); max-width: 52ch; }
 .clausula{ display: grid; grid-template-columns: 168px 1fr; gap: 24px; padding: 28px 0; border-top: 1px solid var(--line); }
@@ -213,7 +253,7 @@ footer strong{ color: var(--ink); font-weight: 600; }
     <nav class="topnav">
       <a href="distribucion.html">Distribución</a>
       <a href="#sobre">Sobre Renza</a>
-      <a class="btn-whatsapp-mini" href="#" data-wa="Hola, quiero platicar sobre mi situación fiscal">WhatsApp</a>
+      <a class="btn-whatsapp-mini" href="#" data-wa="Hola, quiero solicitar un diagnóstico de mi situación financiera y fiscal">WhatsApp</a>
     </nav>
   </div>
 </div>
@@ -223,15 +263,16 @@ footer strong{ color: var(--ink); font-weight: 600; }
   <section class="hero">
     <div class="hero-grid">
       <div class="hero-text">
-        <p class="folio">Renza · asesoría fiscal y contable</p>
-        <h1>Cuentas claras antes de cualquier firma.</h1>
+        <p class="folio">Renza · estrategia financiera y fiscal</p>
+        <h1>Orden financiero, estrategia fiscal y mejores decisiones de negocio.</h1>
         <p class="lead">
-          Trabajo con personas y negocios que están regularizando su situación
-          ante el SAT, cambiando de régimen o necesitan que alguien revise los
-          números antes de decidir. Sin trámites a medias, sin letras chiquitas.
+          Ayudo a empresas y empresarios a entender sus números, estructurar
+          costos, identificar riesgos fiscales y ordenar procesos financieros
+          — para tomar decisiones con información antes de que el crecimiento
+          se convierta en descontrol.
         </p>
         <div class="ctas">
-          <a class="btn-primary" href="#" data-wa="Hola, quiero platicar sobre mi situación fiscal">Escríbeme por WhatsApp</a>
+          <a class="btn-primary" href="#" data-wa="Hola, quiero solicitar un diagnóstico de mi situación financiera y fiscal">Solicitar diagnóstico</a>
           <a class="btn-text" href="#contacto">Ver otras formas de contacto</a>
         </div>
       </div>
@@ -251,48 +292,146 @@ footer strong{ color: var(--ink); font-weight: 600; }
     </div>
   </section>
 
+  <section class="proceso">
+    <div class="proceso-row">
+      <div class="paso">
+        <span class="paso-num">1</span>
+        <h4>Diagnóstico ejecutivo</h4>
+        <p>Reviso tu situación financiera, fiscal y operativa para identificar riesgos y oportunidades concretas.</p>
+      </div>
+      <div class="paso-flecha">→</div>
+      <div class="paso">
+        <span class="paso-num">2</span>
+        <h4>Proyecto de consultoría</h4>
+        <p>Definimos alcance y entregables sobre el hallazgo específico: estructura, costos, cumplimiento o datos.</p>
+      </div>
+      <div class="paso-flecha">→</div>
+      <div class="paso">
+        <span class="paso-num">3</span>
+        <h4>Implementación</h4>
+        <p>Ejecutamos el plan de acción, coordinando con tus áreas contables, legales o de operación.</p>
+      </div>
+      <div class="paso-flecha">→</div>
+      <div class="paso">
+        <span class="paso-num">4</span>
+        <h4>Acompañamiento</h4>
+        <p>Seguimiento mensual o por proyecto, según lo que tu negocio necesite.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="clausulas" id="servicios">
     <p class="kicker">
-      Cuatro cosas resuelven la mayoría de las situaciones que llegan a mi
-      escritorio. Si la tuya no está aquí, probablemente igual la podamos
-      revisar.
+      Cuatro líneas de trabajo, pensadas para negocios donde la operación
+      ya creció y la administración necesita ponerse a la altura.
     </p>
 
     <div class="clausula">
       <div class="num">Primera</div>
       <div>
-        <h3>Regularización fiscal</h3>
-        <p>Diagnóstico de tu RFC, régimen, CFDI y obligaciones pendientes
-        ante el SAT — explicado en lenguaje simple, sin jerga innecesaria.</p>
+        <h3>Estrategia financiera y fiscal</h3>
+        <p>Análisis de decisiones financieras y sus implicaciones fiscales
+        para empresas, socios y estructuras corporativas: planeación fiscal,
+        estructuras societarias, flujo de recursos e impactos tributarios,
+        evaluados antes de ejecutar la decisión — no después.</p>
       </div>
     </div>
 
     <div class="clausula">
       <div class="num">Segunda</div>
       <div>
-        <h3>Elección y optimización de régimen</h3>
-        <p>Análisis entre RESICO, personas físicas y morales para pagar lo
-        que corresponde — ni más, ni menos — y evitar sorpresas después.</p>
+        <h3>Rentabilidad, costos y control financiero</h3>
+        <p>Estructuro la información financiera para entender cuánto gana
+        realmente el negocio, dónde se consume el margen y qué variables
+        necesitan control: costeo, flujo de efectivo, presupuesto, forecast
+        y reporting ejecutivo.</p>
       </div>
     </div>
 
     <div class="clausula">
       <div class="num">Tercera</div>
       <div>
-        <h3>Cumplimiento bancario y documental</h3>
-        <p>Estructura de cuentas, CFDI y respaldo documental para que tus
-        movimientos bancarios coincidan con lo que declaras.</p>
+        <h3>Ordenamiento financiero-fiscal y operativo</h3>
+        <p>Cuando la operación crece más rápido que la administración,
+        diagnostico procesos, información y controles para construir una
+        estructura que pueda escalar — sin que el desorden se convierta en
+        riesgo fiscal.</p>
       </div>
     </div>
 
     <div class="clausula">
       <div class="num">Cuarta</div>
       <div>
-        <h3>Constitución de empresas</h3>
-        <p>Trámite de tu sociedad — SAS u otro régimen societario — desde el
-        acta constitutiva hasta tu primera declaración.</p>
+        <h3>Datos y automatización financiera</h3>
+        <p>Convierto información dispersa en modelos, reportes y
+        herramientas para administrar con datos, no con intuición — la
+        tecnología resuelve un problema financiero concreto, no reemplaza
+        el diagnóstico.</p>
       </div>
     </div>
+  </section>
+
+  <section class="experiencia">
+    <div class="experiencia-box">
+      <p class="experiencia-label">Experiencia aplicada a operaciones reales</p>
+
+      <p>
+        He participado como consultor senior en proyectos financieros,
+        fiscales y operativos para empresas privadas con operaciones
+        complejas.
+      </p>
+
+      <p>
+        En uno de ellos trabajé con un fondo de inversión con más de
+        <strong>$2,000 millones de pesos en activos bajo gestión</strong>
+        y una utilidad bruta anual cercana a
+        <strong>$35 millones de pesos</strong>,
+        desarrollando análisis financiero y fiscal sobre estructura
+        corporativa, planeación de distribuciones, optimización de IVA
+        y evaluación de alternativas con componentes México–Estados Unidos.
+      </p>
+
+      <p>
+        También participé en el ordenamiento financiero, fiscal y operativo
+        de una empresa nacional de servicios médicos ocupacionales con más de
+        <strong>20 clientes corporativos</strong> y más de
+        <strong>130 consultorios distribuidos en México</strong>, donde el
+        crecimiento de la operación había superado la capacidad de sus
+        controles administrativos.
+      </p>
+
+      <p>
+        El trabajo incluyó estrategia de ordenamiento fiscal, estructuración
+        sistémica de costos y organización de información financiera y
+        operativa para mejorar el control y la toma de decisiones.
+      </p>
+
+      <p>
+        En ambos casos, el trabajo partió del diagnóstico, continuó con el
+        análisis de riesgos e ineficiencias y terminó en recomendaciones e
+        implementación coordinada con áreas contables, fiscales, legales
+        y operativas.
+      </p>
+
+      <p class="experiencia-nota">
+        Por confidencialidad profesional, no se publican nombres de clientes
+        ni información que permita identificar o reconstruir estructuras
+        o estrategias fiscales específicas. Las cifras de escala y resultados
+        se presentan únicamente para contextualizar la experiencia.
+      </p>
+    </div>
+  </section>
+
+  <section class="casos">
+    <p class="kicker">Si te reconoces en alguna de estas, probablemente pueda ayudarte:</p>
+    <ul class="casos-list">
+      <li>“Mi empresa creció, pero mi administración no creció con ella.”</li>
+      <li>“Sé cuánto facturo, pero no sé dónde estoy perdiendo margen.”</li>
+      <li>“Necesito estructurar costos por cliente, unidad o servicio.”</li>
+      <li>“Tengo que tomar una decisión financiera y necesito entender su impacto fiscal antes de ejecutarla.”</li>
+      <li>“Necesito ordenar mi situación fiscal antes de que se complique.”</li>
+      <li>“Estoy por constituir una empresa y no sé por dónde empezar.”</li>
+    </ul>
   </section>
 
   <p class="crosslink">¿Buscas comprar o vender al mayoreo? <a href="distribucion.html">Conoce Distribución</a>.</p>
@@ -317,12 +456,12 @@ footer strong{ color: var(--ink); font-weight: 600; }
   </section>
 
   <section class="contacto" id="contacto">
-    <h2>Contacto</h2>
-    <p class="lead">Cuéntame brevemente tu situación y te respondo con los siguientes pasos.</p>
+    <h2>Solicitar diagnóstico</h2>
+    <p class="lead">Cuéntame brevemente tu situación y te respondo con un diagnóstico inicial y los siguientes pasos.</p>
 
     <div class="contact-grid">
       <div class="direct-line">
-        <a href="#" data-wa="Hola, quiero platicar sobre mi situación fiscal">
+        <a href="#" data-wa="Hola, quiero solicitar un diagnóstico de mi situación financiera y fiscal">
           <strong>WhatsApp</strong>
           <span>Respuesta más rápida</span>
         </a>
@@ -346,7 +485,7 @@ footer strong{ color: var(--ink); font-weight: 600; }
           <label for="mensaje">Mensaje</label><br>
           <textarea id="mensaje" name="mensaje" required></textarea>
         </div>
-        <button type="submit">Enviar</button>
+        <button type="submit">Solicitar diagnóstico</button>
         <p class="form-status" id="formStatus" aria-live="polite"></p>
       </form>
     </div>
@@ -407,7 +546,7 @@ footer strong{ color: var(--ink); font-weight: 600; }
         headers: { 'Accept': 'application/json' }
       }).then(function(response){
         btn.disabled = false;
-        btn.textContent = 'Enviar';
+        btn.textContent = 'Solicitar diagnóstico';
         if (response.ok){
           form.reset();
           statusEl.textContent = 'Gracias, ' + nombre + ' — tu mensaje quedó enviado. Te respondo pronto.';
@@ -417,7 +556,7 @@ footer strong{ color: var(--ink); font-weight: 600; }
         }
       }).catch(function(){
         btn.disabled = false;
-        btn.textContent = 'Enviar';
+        btn.textContent = 'Solicitar diagnóstico';
         statusEl.textContent = 'No se pudo enviar. Escríbeme mejor por WhatsApp o a ' + CONFIG.email + '.';
         statusEl.className = 'form-status error';
       });
