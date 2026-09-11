@@ -474,7 +474,7 @@ footer strong{ color: var(--ink); font-weight: 600; }
       <form class="msg" id="contactForm" action="https://formspree.io/f/xljeplqq" method="POST">
         <input type="hidden" name="_subject" value="Contacto desde renzaservices.com — Servicios">
         <div>
-          <label for="nombre">Nombre</label><br>
+          <label for="nombre">Nombre / Razón Social</label><br>
           <input id="nombre" name="nombre" type="text" required>
         </div>
         <div>
@@ -482,7 +482,11 @@ footer strong{ color: var(--ink); font-weight: 600; }
           <input id="correo" name="correo" type="email" required>
         </div>
         <div>
-          <label for="mensaje">Mensaje</label><br>
+          <label for="telefono">Teléfono / WhatsApp</label><br>
+          <input id="telefono" name="telefono" type="tel">
+        </div>
+        <div>
+          <label for="mensaje">¿Qué necesitas resolver?</label><br>
           <textarea id="mensaje" name="mensaje" required></textarea>
         </div>
         <button type="submit">Solicitar diagnóstico</button>
