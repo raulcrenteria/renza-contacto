@@ -203,6 +203,13 @@ a{ color: inherit; }
 .direct-line a:hover strong{ color: var(--seal); }
 
 form.msg{ display: flex; flex-direction: column; gap: 14px; }
+.form-honeypot{
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
 form.msg label{ font-size: 0.85rem; color: var(--muted); }
 form.msg input, form.msg textarea{
   font-family: inherit; font-size: 1rem; padding: 10px 0; border: none;
@@ -500,6 +507,10 @@ footer strong{ color: var(--ink); font-weight: 600; }
 
       <form class="msg" id="contactForm" action="https://formspree.io/f/xljeplqq" method="POST">
         <input type="hidden" name="_subject" value="Contacto desde renzaservices.com — Servicios">
+        <div class="form-honeypot" aria-hidden="true">
+          <label for="website-servicios">Website</label>
+          <input id="website-servicios" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+        </div>
         <div>
           <label for="nombre">Nombre / Razón Social</label><br>
           <input id="nombre" name="nombre" type="text" required>
