@@ -189,6 +189,12 @@ a{ color: inherit; }
 .sobre h2{ font-size: 1.6rem; margin-bottom: 16px; }
 .sobre p{ color: var(--muted); max-width: 58ch; }
 .sobre p + p{ margin-top: 14px; }
+.sobre-more{ margin-top: 14px; max-width: 58ch; }
+.sobre-more summary{ color: var(--seal); cursor: pointer; width: fit-content; }
+.sobre-more summary:focus-visible{ outline: 2px solid var(--seal); outline-offset: 3px; }
+.sobre-more[open] summary{ margin-bottom: 14px; }
+.sobre-more-content p{ margin: 0; }
+.sobre-more-content p + p{ margin-top: 14px; }
 @media (max-width: 620px){ .sobre .wrap{ grid-template-columns: 1fr; } }
 
 .contacto{ max-width: 720px; margin: 0 auto; padding: 72px 24px 40px; }
@@ -477,14 +483,19 @@ footer strong{ color: var(--ink); font-weight: 600; }
         <h2>Sobre Renza</h2>
         <p>
           Renza es propiedad de Raúl Rentería, asesor fiscal y financiero con
-          cédula profesional, y opera bajo Renza Comercializadora Distribución
-          y Servicios, S.A.S. de C.V.
+          cédula profesional.
         </p>
-        <p>
-          La idea detrás de Renza es simple: revisar los números antes de
-          que alguien más tenga que hacerlo por ti — un banco, un cliente o
-          el SAT.
-        </p>
+        <details class="sobre-more">
+          <summary>Ver más</summary>
+          <div class="sobre-more-content">
+            <p>Opera bajo Renza Comercializadora Distribución y Servicios, S.A.S. de C.V.</p>
+            <p>
+              La idea detrás de Renza es simple: revisar los números antes de
+              que alguien más tenga que hacerlo por ti — un banco, un cliente o
+              el SAT.
+            </p>
+          </div>
+        </details>
       </div>
     </div>
   </section>
