@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..800&display=swap">
-<title>renza. free — Panorama del negocio v0.4</title>
+<title>renza. free — Panorama del negocio v0.5</title>
 <style>
 :root{
   color-scheme:light;
@@ -36,6 +36,8 @@
   --inverse-2:#171717;
   --inverse-text:#FAFAFA;
   --inverse-muted:#A3A3A3;
+  --toast-bg:#0A0A0A;
+  --toast-text:#FAFAFA;
   --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.04);
   --radius:12px;
   --sidebar:224px;
@@ -66,6 +68,8 @@ html[data-theme="dark"]{
   --inverse-2:#141414;
   --inverse-text:#FAFAFA;
   --inverse-muted:#A3A3A3;
+  --toast-bg:#FAFAFA;
+  --toast-text:#0A0A0A;
   --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
 }
 *{box-sizing:border-box}
@@ -139,6 +143,7 @@ h1,h2,h3{margin:0;color:var(--text)}
 h1{font-family:var(--font);font-size:clamp(2rem,4vw,3rem);font-weight:650;line-height:1.06;letter-spacing:-.04em}
 .subtitle{margin:9px 0 0;color:var(--muted);font-size:.98rem}
 .button{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
   min-height:42px;padding:10px 17px;border:1px solid transparent;border-radius:7px;
   background:var(--primary);color:var(--surface);font-weight:650;cursor:pointer;
   transition:transform .18s ease,background-color .18s ease,border-color .18s ease
@@ -146,15 +151,6 @@ h1{font-family:var(--font);font-size:clamp(2rem,4vw,3rem);font-weight:650;line-h
 .button:hover{transform:translateY(-1px)}
 .button-secondary{background:transparent;color:var(--text);border-color:var(--line)}
 .button-secondary:hover{border-color:var(--primary);color:var(--primary)}
-.kpi-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:20px}
-.kpi-card{
-  min-width:0;padding:21px;background:var(--surface);border:1px solid var(--line);
-  border-radius:var(--radius);box-shadow:var(--shadow);transition:transform .18s ease,border-color .18s ease
-}
-.kpi-card:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--primary) 35%,var(--line))}
-.kpi-label{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--muted);font-size:.78rem;font-weight:650}
-.kpi-dot{width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:var(--accent)}
-.kpi-value{margin-top:18px;font-size:clamp(1.7rem,3vw,2.35rem);font-weight:650;line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
 .dashboard-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,.65fr);gap:20px}
 .panel{
   min-width:0;padding:25px;background:var(--surface);border:1px solid var(--line);
@@ -218,9 +214,6 @@ dialog{
   box-shadow:0 28px 80px rgba(0,0,0,.3)
 }
 dialog::backdrop{background:rgba(0,0,0,.62);backdrop-filter:blur(2px)}
-.dialog-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;padding:24px 26px;border-bottom:1px solid var(--line)}
-.dialog-head h2{font-family:var(--font);font-size:1.55rem;font-weight:650}
-.dialog-head p{margin:5px 0 0;color:var(--muted);font-size:.82rem}
 .icon-button{
   width:38px;height:38px;min-width:38px;aspect-ratio:1/1;flex:0 0 auto;padding:0;
   display:inline-grid;place-items:center;border:1px solid color-mix(in srgb,var(--line) 82%,transparent);
@@ -229,24 +222,12 @@ dialog::backdrop{background:rgba(0,0,0,.62);backdrop-filter:blur(2px)}
   transition:background-color .18s ease,border-color .18s ease,transform .18s ease
 }
 .icon-button:hover{background:var(--surface-2);border-color:color-mix(in srgb,var(--primary) 35%,var(--line));transform:translateY(-1px)}
-.edit-form{padding:24px 26px}
-.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
-.field{display:grid;gap:6px;min-width:0}
-.field-wide{grid-column:1/-1}
-.field label{color:var(--muted);font-size:.78rem;font-weight:650}
-.field input{
-  width:100%;min-width:0;padding:11px 12px;border:1px solid var(--line);border-radius:7px;
-  background:var(--surface-3);color:var(--text);font-variant-numeric:tabular-nums
-}
-.field input:focus{border-color:var(--primary)}
-.dialog-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
 @media (max-width:1024px){
   .app-shell{grid-template-columns:1fr;grid-template-rows:auto auto 1fr}
   .app-header{grid-column:1;grid-template-columns:auto minmax(0,1fr) auto}
   .sidebar{grid-column:1;grid-row:2;padding:10px 22px;border-right:0;border-bottom:1px solid var(--line)}
   .side-label{display:none}.side-nav{display:flex;justify-content:center;gap:8px}.side-nav a{padding:8px 13px}
   .main{grid-column:1;grid-row:3;padding-top:30px}
-  .kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .dashboard-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .structure,.balance,.composition,.premium{grid-column:auto}
   .composition{grid-column:1/-1}
@@ -261,8 +242,6 @@ dialog::backdrop{background:rgba(0,0,0,.62);backdrop-filter:blur(2px)}
   .sidebar{display:none}
   .main{padding:27px 18px 36px}
   .page-head{align-items:stretch;flex-direction:column}.page-head .button{width:100%}
-  .kpi-grid{grid-template-columns:1fr;gap:10px}
-  .kpi-card{padding:18px}.kpi-value{font-size:1.8rem;margin-top:12px}
   .dashboard-grid{grid-template-columns:1fr;gap:14px}
   .structure,.balance,.composition,.premium,.consulting{grid-column:1}
   .panel{padding:20px}.panel-head{margin-bottom:20px}
@@ -275,8 +254,6 @@ dialog::backdrop{background:rgba(0,0,0,.62);backdrop-filter:blur(2px)}
   }
   .bottom-nav a{display:grid;place-items:center;color:var(--muted);font-size:.65rem;text-decoration:none;text-align:center}
   .bottom-nav a.active{color:var(--primary);font-weight:700}
-  .form-grid{grid-template-columns:1fr}.field-wide{grid-column:1}
-  .dialog-head,.edit-form{padding:20px}.dialog-actions{flex-direction:column-reverse}.dialog-actions .button{width:100%}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important}
@@ -322,15 +299,10 @@ html[data-theme="dark"] .info-button:hover,html[data-theme="dark"] .info-button[
 .nav-status svg{width:12px;height:12px;flex:0 0 12px}
 .side-nav a.active .nav-status{color:var(--positive)}
 .scope-note{margin:7px 0 0;color:var(--muted);font-size:.76rem}
-.kpi-context{min-height:38px;margin:14px 0 0;color:var(--muted);font-size:.74rem;line-height:1.4}
-.mobile-kpi-meta{display:none}
-.kpi-card.is-positive{border-color:color-mix(in srgb,var(--positive) 38%,var(--line))}
-.kpi-card.is-negative{border-color:color-mix(in srgb,var(--negative) 58%,var(--line));background:linear-gradient(145deg,var(--surface),var(--negative-soft))}
-.kpi-card.is-negative .kpi-value{color:var(--negative)}
 .dashboard-grid{display:grid;grid-template-columns:1fr;gap:20px}
 .result-route,.pending-panel,.tax-panel{grid-column:1}
 .result-route{padding:30px;scroll-margin-top:90px;container-name:route;container-type:inline-size}
-.route-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(135px,.72fr) minmax(0,1fr) minmax(135px,.72fr) minmax(0,1fr);align-items:stretch;gap:12px}
+.route-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(150px,.7fr) minmax(0,1fr);align-items:stretch;gap:12px}
 .route-card{min-width:0;min-height:204px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;text-align:center;border:1px solid var(--line);border-radius:12px;background:var(--surface-3)}
 .semantic-icon{width:20px;height:20px;flex:0 0 20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .route-heading{width:100%;display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:14px}.route-heading .semantic-icon{width:22px;height:22px;flex-basis:22px;color:var(--primary)}
@@ -338,11 +310,6 @@ html[data-theme="dark"] .info-button:hover,html[data-theme="dark"] .info-button[
 .route-card h3{font-size:.72rem;font-weight:750;letter-spacing:.08em;text-transform:uppercase}
 .route-value{width:100%;margin:28px 0 0;text-align:center;font-size:clamp(1.75rem,3vw,2.45rem);font-weight:680;line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums;white-space:nowrap;overflow-wrap:normal}
 .route-meta{width:100%;margin-top:12px;text-align:center;color:var(--muted);font-size:.78rem;font-weight:650}
-.route-final{border-color:color-mix(in srgb,var(--positive) 42%,var(--line));background:linear-gradient(145deg,var(--surface),var(--positive-soft));box-shadow:none}
-.route-card.is-negative{border-color:color-mix(in srgb,var(--negative) 58%,var(--line));background:linear-gradient(145deg,var(--surface),var(--negative-soft))}
-.route-card.is-negative .route-value,.route-card.is-negative .route-meta{color:var(--negative)}
-.route-final.is-negative{border-color:color-mix(in srgb,var(--negative) 58%,var(--line));background:linear-gradient(145deg,var(--surface),var(--negative-soft));box-shadow:none}
-.route-final.is-negative .route-value,.route-final.is-negative .route-meta{color:var(--negative)}
 .route-connector{min-width:0;min-height:0;display:grid;grid-template-rows:minmax(0,1fr) auto minmax(0,1fr);align-items:stretch;gap:8px;text-align:center}
 .deduction-group{width:100%;align-self:end;display:grid;justify-items:center;gap:8px}
 .route-line{grid-row:2;width:100%;height:1px;justify-self:center;background:var(--line);position:relative}
@@ -357,7 +324,6 @@ html[data-theme="dark"] .info-button:hover,html[data-theme="dark"] .info-button[
 .pending-card.is-payable .pending-card-icon{background:var(--surface-2);color:var(--text)}
 .pending-label{display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--muted);font-size:.72rem;font-weight:750;letter-spacing:.08em;text-transform:uppercase}
 .pending-value{margin:17px 0 10px;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:680;line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
-.pending-share{margin:0 0 16px;color:var(--muted);font-size:.75rem;font-weight:700}
 .pending-card>p:last-child{margin:0;color:var(--muted);font-size:.82rem}
 .education-note{margin-top:14px;padding:14px 16px;display:flex;align-items:center;gap:11px;border-left:3px solid var(--warning);border-radius:0 8px 8px 0;background:var(--warning-soft);color:var(--text);font-size:.82rem}
 .education-note .semantic-icon{color:var(--warning)}
@@ -379,45 +345,6 @@ html[data-theme="dark"] .info-button:hover,html[data-theme="dark"] .info-button[
 .tax-preview-row:last-child{border-bottom:0}
 .masked-value{color:var(--inverse-muted);letter-spacing:.18em;filter:blur(1.7px);user-select:none}
 dialog{width:min(720px,calc(100% - 32px));overflow:auto}
-.dialog-head{position:sticky;top:0;z-index:2;background:var(--surface)}
-.capture-block{padding:19px;border:1px solid var(--line);border-radius:11px;background:var(--surface-3)}
-.capture-block+.capture-block{margin-top:14px}
-.capture-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px}
-.step-label{margin:0 0 4px;color:var(--accent);font-size:.66rem;font-weight:750;letter-spacing:.12em;text-transform:uppercase}
-.capture-head h3{font-size:.84rem;letter-spacing:.04em;text-transform:uppercase}
-.field-label{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--muted);font-size:.77rem;font-weight:680}
-.dialog-actions{position:sticky;bottom:0;z-index:2;margin:20px -26px -24px;padding:18px 26px;border-top:1px solid var(--line);background:var(--surface)}
-#editDialog{
-  border-color:rgba(255,255,255,.34);
-  background:linear-gradient(145deg,rgba(255,255,255,.88),rgba(245,245,245,.76));
-  box-shadow:0 24px 70px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.42)
-}
-#editDialog .dialog-head{
-  border-bottom-color:rgba(0,0,0,.12);background:rgba(250,250,250,.9);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.48)
-}
-#editDialog .dialog-actions{
-  border-top-color:rgba(0,0,0,.12);background:rgba(250,250,250,.92);
-  box-shadow:0 -8px 22px rgba(0,0,0,.035),inset 0 1px 0 rgba(255,255,255,.4)
-}
-html[data-theme="dark"] #editDialog{
-  border-color:rgba(255,255,255,.16);
-  background:linear-gradient(145deg,rgba(28,28,28,.84),rgba(10,10,10,.72));
-  box-shadow:0 24px 70px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.12)
-}
-html[data-theme="dark"] #editDialog .dialog-head{border-bottom-color:rgba(255,255,255,.1);background:rgba(20,20,20,.84);box-shadow:inset 0 1px 0 rgba(255,255,255,.09)}
-html[data-theme="dark"] #editDialog .dialog-actions{border-top-color:rgba(255,255,255,.1);background:rgba(20,20,20,.86);box-shadow:0 -8px 22px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.08)}
-@supports ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
-  #editDialog{
-    background:linear-gradient(145deg,rgba(255,255,255,.46),rgba(245,245,245,.26));
-    -webkit-backdrop-filter:blur(10px) saturate(125%);backdrop-filter:blur(10px) saturate(125%)
-  }
-  #editDialog .dialog-head{background:rgba(250,250,250,.62);-webkit-backdrop-filter:blur(14px) saturate(125%);backdrop-filter:blur(14px) saturate(125%)}
-  #editDialog .dialog-actions{background:rgba(250,250,250,.68);-webkit-backdrop-filter:blur(14px) saturate(125%);backdrop-filter:blur(14px) saturate(125%)}
-  html[data-theme="dark"] #editDialog{background:linear-gradient(145deg,rgba(28,28,28,.52),rgba(10,10,10,.3))}
-  html[data-theme="dark"] #editDialog .dialog-head{background:rgba(20,20,20,.58)}
-  html[data-theme="dark"] #editDialog .dialog-actions{background:rgba(20,20,20,.62)}
-}
 .info-dialog{width:min(480px,calc(100% - 32px));padding:0;overflow:visible;background:transparent;border:0}
 .info-dialog::backdrop{background:rgba(0,0,0,.12);backdrop-filter:blur(2px)}
 .info-callout{
@@ -452,7 +379,6 @@ html[data-theme="dark"] .info-callout{
 }
 .business-overview.is-trend-first{grid-template-columns:repeat(2,minmax(0,1fr))}
 .business-overview.is-trend-first .trend-card{order:-1}
-.legacy-kpis{display:none}
 .cash-summary{display:flex;flex-direction:column;min-width:0;max-width:100%;min-height:0;padding:24px;align-self:start;box-sizing:border-box;container-name:cash-summary;container-type:inline-size}
 .business-widget-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:22px}
 .cash-summary .business-widget-head{margin-bottom:16px}
@@ -537,7 +463,7 @@ html[data-theme="dark"] .info-callout{
 @media (max-width:1100px){
   .business-overview,.business-overview.is-trend-first{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-@container route (max-width:960px){
+@container route (max-width:620px){
   .route-grid{grid-template-columns:1fr}.route-card{min-height:170px}
   .route-connector{display:flex;flex-direction:column;align-items:stretch;padding:0 22px;text-align:left}.deduction-group{width:max-content;max-width:100%;align-self:stretch}
   .route-line{width:1px;height:24px;margin-left:18px}
@@ -546,7 +472,7 @@ html[data-theme="dark"] .info-callout{
 }
 @media (max-width:1024px){.nav-status{display:none}}
 @media (max-width:640px){
-  body{padding-bottom:calc(86px + env(safe-area-inset-bottom))}
+  body{padding-bottom:calc(150px + env(safe-area-inset-bottom))}
   .app-header{min-height:52px;padding:7px 14px;display:flex;align-items:center;gap:12px}
   .brand{margin-right:auto;font-size:.98rem}.product-name,.demo-user{display:none}
   .header-meta{display:flex;flex:0 0 auto;align-items:center;justify-content:flex-end;gap:10px}
@@ -556,7 +482,7 @@ html[data-theme="dark"] .info-callout{
   .main{padding:16px 14px 24px}
   .page-head{gap:10px;margin-bottom:16px}.page-head .eyebrow{display:none}.subtitle{font-size:.78rem;line-height:1.4}
   h1{font-size:clamp(1.58rem,8vw,1.9rem);line-height:1.02}.scope-note{margin-top:6px;font-size:.7rem;line-height:1.35}
-  .page-head .button{width:auto;align-self:flex-start;min-height:40px;padding:8px 14px}
+  .page-head .register-trigger{display:none}
   .profile-context{font-size:.72rem}.business-overview,.business-overview.is-trend-first{grid-template-columns:1fr;gap:12px;margin-bottom:12px}
   .business-overview.is-trend-first .trend-card{order:-1}
   .cash-summary{padding:18px}.business-widget-head{margin-bottom:16px}.business-widget-head h2{font-size:.98rem}
@@ -565,10 +491,6 @@ html[data-theme="dark"] .info-callout{
   .summary-stats{gap:8px;margin-top:16px}.summary-stat{padding:12px}.summary-value{font-size:1.42rem}.summary-share{font-size:.66rem}
   .trend-card{width:100%;height:auto;aspect-ratio:auto;padding:18px;align-self:start}.trend-current{font-size:2rem}.trend-change{margin-bottom:5px}
   .trend-chart{min-height:135px;min-width:390px;grid-auto-columns:62px;gap:10px}.trend-track{min-height:96px}
-  .kpi-grid{gap:8px;margin-bottom:14px}.kpi-grid .kpi-card:nth-child(3){display:none}
-  .kpi-card{width:100%;padding:14px 16px}.kpi-card:hover{transform:none}
-  .kpi-label{font-size:.73rem}.kpi-value{margin-top:7px;font-size:1.65rem;line-height:1.05}
-  .kpi-context{display:none}.mobile-kpi-meta{display:block;margin:5px 0 0;color:var(--muted);font-size:.72rem;font-weight:650}
   .dashboard-grid{gap:12px}.panel,.result-route,.tax-panel{padding:16px}
   .panel-head{gap:10px;margin-bottom:14px}.panel-title{font-size:.92rem}.panel-copy{font-size:.76rem;line-height:1.4}
   .result-route .panel-head .eyebrow,.panel-tag{display:none}
@@ -582,19 +504,14 @@ html[data-theme="dark"] .info-callout{
   .route-line{display:none}.deduction-chip{width:100%;max-width:none;min-width:0;padding:6px 9px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);align-items:center;gap:8px;border-radius:8px;font-size:.68rem}
   .deduction-label{justify-content:flex-start}.deduction-chip strong{min-width:0;margin-top:0;text-align:right;font-size:.8rem}
   .pending-grid{grid-template-columns:1fr;gap:8px}.pending-card{padding:14px 16px}
-  .pending-value{margin:9px 0 5px;font-size:1.7rem}.pending-share{margin-bottom:8px}.education-note{margin-top:10px;padding:11px 13px}
+  .pending-value{margin:9px 0 5px;font-size:1.7rem}.education-note{margin-top:10px;padding:11px 13px}
   .tax-layout{display:flex;flex-direction:column;align-items:stretch;gap:12px}.tax-layout>div:first-child{display:contents}
   .tax-lock,.tax-eyebrow{display:none}.tax-panel h2{order:1;font-size:1.65rem}.tax-copy{order:2;margin:0;font-size:.82rem}
   .tax-preview{order:3;min-width:0;padding:10px 13px}.tax-preview-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:10px 0;font-size:.76rem}
   .tax-preview-row>span:first-child{min-width:0;overflow-wrap:anywhere}.masked-value{white-space:nowrap}
   .tax-cta{order:4;width:100%;min-width:0}.tax-price{order:5;margin:0;text-align:center}.tax-product{order:6;margin:2px 0 0;text-align:center}
   .tax-status{order:7;margin:0;text-align:center;font-size:.69rem}#taxStatus{order:8}
-  #futureModules{display:block;text-align:center}
-  #editDialog{width:calc(100% - 16px);max-height:calc(100dvh - 16px)}
-  .dialog-head,.edit-form{padding:16px}.dialog-head{gap:10px}.dialog-head h2{font-size:1.3rem}.dialog-head p{font-size:.74rem}
-  .capture-block{padding:13px}.capture-head{margin-bottom:12px}.form-grid{gap:12px}.field-label{min-width:0}
-  .field-label label{min-width:0;overflow-wrap:anywhere}.info-button{width:44px;height:44px;min-width:44px;flex-basis:44px}.icon-button{width:44px;height:44px;min-width:44px;flex-basis:44px}
-  .dialog-actions{margin:16px -16px -16px;padding:14px 16px;gap:8px}
+  #futureModules{display:block;text-align:center}.info-button{width:44px;height:44px;min-width:44px;flex-basis:44px}.icon-button{width:44px;height:44px;min-width:44px;flex-basis:44px}
   .info-dialog{width:100%;max-width:100%;margin:auto auto 0}.info-callout{width:100%;max-height:min(78dvh,620px);padding:18px 16px calc(18px + env(safe-area-inset-bottom));border-radius:16px 16px 0 0;border-bottom:0}
   .info-callout-head{margin-bottom:12px}.info-callout h2{font-size:1.22rem}.info-section+.info-section{margin-top:12px;padding-top:12px}
   .bottom-nav{
@@ -666,13 +583,104 @@ html[data-theme="dark"] .info-callout{
     html[data-theme="dark"] .bottom-nav{background:rgba(24,24,24,.72)}
   }
 }
+
+/* Registrar movimiento v0.5 · pilar R (Register) */
+.button-icon{width:18px;height:18px;flex:0 0 18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.widget-head-meta{display:flex;align-items:center;gap:10px}
+.summary-filled{display:flex;flex-direction:column;flex:1;min-width:0}
+.summary-empty{display:grid;justify-items:start;gap:10px;padding:6px 0 2px}
+.summary-empty-title{margin:0;font-size:clamp(1.4rem,3vw,1.9rem);font-weight:700;line-height:1.1;letter-spacing:-.035em}
+.summary-empty-copy{max-width:440px;margin:0 0 8px;color:var(--muted);font-size:.9rem}
+.trend-empty{max-width:380px;margin:6px 0 0;color:var(--muted);font-size:.88rem}
+.route-pending{border-style:dashed;background:var(--surface)}
+.route-pending .route-heading .semantic-icon{color:var(--muted)}
+.route-explain{margin:14px 0 0;color:var(--muted);font-size:.84rem;line-height:1.5}
+.fab{display:none}
+.toast{
+  position:fixed;left:50%;bottom:24px;z-index:60;width:max-content;max-width:min(560px,calc(100% - 28px));
+  padding:10px 10px 10px 16px;display:flex;align-items:center;gap:14px;border-radius:14px;
+  background:var(--toast-bg);color:var(--toast-text);box-shadow:0 12px 32px rgba(0,0,0,.24);
+  font-size:.86rem;font-weight:600;line-height:1.35;transform:translateX(-50%);animation:toast-in .2s ease both
+}
+.toast-action{flex:0 0 auto;min-height:36px;padding:6px 12px;border:1px solid currentColor;border-radius:10px;background:transparent;color:inherit;font-weight:700;cursor:pointer}
+@keyframes toast-in{from{opacity:0;transform:translate(-50%,8px)}to{opacity:1;transform:translate(-50%,0)}}
+@keyframes value-in{from{opacity:.25;transform:translateY(4px)}to{opacity:1;transform:none}}
+.cash-summary.is-updated .income-value,.cash-summary.is-updated .summary-value,.cash-summary.is-updated .summary-ring-center strong{animation:value-in .45s ease both}
+.register-dialog{
+  width:min(460px,calc(100% - 32px));max-height:calc(100dvh - 32px);padding:0;overflow:hidden;
+  color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:0 28px 80px rgba(0,0,0,.28)
+}
+.register-dialog::backdrop{background:rgba(0,0,0,.42);backdrop-filter:blur(3px)}
+.register-step{max-height:calc(100dvh - 32px);overflow:auto;padding:20px}
+.sheet-head{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.sheet-head h2{flex:1;min-width:0;font-size:1.25rem;font-weight:700;letter-spacing:-.025em}
+.type-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.type-option{
+  min-width:0;min-height:112px;padding:16px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:12px;
+  text-align:left;border:1px solid var(--line);border-radius:14px;background:var(--surface-3);color:var(--text);cursor:pointer;
+  transition:border-color .16s ease,transform .16s ease,background-color .16s ease
+}
+.type-option:hover{border-color:var(--text);transform:translateY(-1px)}
+.type-option:active{transform:scale(.98)}
+.type-icon{width:38px;height:38px;display:grid;place-items:center;border:1px solid var(--line);border-radius:11px;background:var(--surface);color:var(--text)}
+.type-icon svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.type-option.is-in .type-icon{color:var(--positive)}
+.type-text{display:grid;gap:3px}
+.type-label{font-size:.98rem;font-weight:700}
+.type-hint{color:var(--muted);font-size:.76rem;line-height:1.3}
+.other-link{width:100%;min-height:44px;margin-top:12px;border:0;background:transparent;color:var(--muted);font-size:.84rem;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.other-link:hover{color:var(--text)}
+.amount-display{display:grid;justify-items:center;gap:4px;padding:4px 0 10px;text-align:center;outline:none}
+.amount-label{color:var(--muted);font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.amount-value{font-size:clamp(2.4rem,11vw,3.2rem);font-weight:700;line-height:1.05;letter-spacing:-.045em;font-variant-numeric:tabular-nums}
+.amount-value.is-empty{color:var(--muted)}
+.amount-hint{max-width:340px;margin:2px 0 0;color:var(--muted);font-size:.78rem}
+.question{margin-top:12px}
+.question-label{display:block;margin-bottom:7px;color:var(--muted);font-size:.74rem;font-weight:700}
+.segmented{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:4px;padding:4px;border-radius:12px;background:var(--surface-2)}
+.segmented button{min-width:0;min-height:40px;padding:6px 8px;border:0;border-radius:9px;background:transparent;color:var(--muted);font-size:.82rem;font-weight:650;cursor:pointer;transition:background-color .14s ease,color .14s ease}
+.segmented button[aria-pressed="true"]{background:var(--surface);color:var(--text);box-shadow:0 1px 2px rgba(0,0,0,.08),0 0 0 1px var(--line)}
+.segmented-compact{flex:0 0 auto;grid-auto-columns:auto}
+.segmented-compact button{padding:6px 12px}
+.partial-field{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px;color:var(--muted);font-size:.82rem;font-weight:650}
+.partial-field input,.note-input,.date-input{min-width:0;min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface-3);color:var(--text);font-variant-numeric:tabular-nums}
+.partial-field input{width:150px;text-align:right}
+.partial-field input:focus,.note-input:focus,.date-input:focus{border-color:var(--text)}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.note-input{flex:1 1 150px}
+.date-input{flex:1 1 100%}
+.form-error{margin:10px 0 0;color:var(--negative);font-size:.82rem;font-weight:650}
+.keypad{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:14px}
+.key{min-height:52px;display:grid;place-items:center;border:0;border-radius:12px;background:var(--surface-2);color:var(--text);font-size:1.3rem;font-weight:600;font-variant-numeric:tabular-nums;cursor:pointer;transition:background-color .12s ease,transform .08s ease;-webkit-tap-highlight-color:transparent}
+.key:hover{background:var(--line)}
+.key:active{transform:scale(.96)}
+.key svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.save-button{width:100%;min-height:52px;margin-top:12px;font-size:1rem}
+.save-button:disabled{opacity:.6;cursor:wait}
+.save-note{margin:8px 0 0;color:var(--muted);font-size:.72rem;text-align:center}
+@media (max-width:640px){
+  .fab{
+    position:fixed;right:16px;bottom:calc(86px + env(safe-area-inset-bottom));z-index:31;width:56px;height:56px;
+    display:grid;place-items:center;border:0;border-radius:18px;background:var(--primary);color:var(--surface);
+    box-shadow:0 10px 24px rgba(0,0,0,.22);cursor:pointer;-webkit-tap-highlight-color:transparent
+  }
+  .fab svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}
+  .fab:active{transform:scale(.96)}
+  .toast{bottom:calc(156px + env(safe-area-inset-bottom))}
+  .summary-empty .button{width:100%}
+  .register-dialog{width:100%;max-width:100%;max-height:94dvh;margin:auto 0 0;border-bottom:0;border-radius:20px 20px 0 0}
+  .register-step{max-height:94dvh;padding:16px 16px calc(14px + env(safe-area-inset-bottom))}
+  .type-option{min-height:104px;padding:14px}
+  .key{min-height:48px}
+}
+@media (prefers-reduced-motion:reduce){.toast,.cash-summary.is-updated .income-value,.cash-summary.is-updated .summary-value,.cash-summary.is-updated .summary-ring-center strong{animation:none}}
 </style>
 </head>
 <body class="entry-pending">
 <div class="app-shell">
   <header class="app-header">
     <a class="brand" href="#panorama" aria-label="renza. inicio">renza<span class="wordmark-dot">.</span></a>
-    <div class="product-name">Panorama del negocio <span class="version">v0.4</span></div>
+    <div class="product-name">Panorama del negocio <span class="version">v0.5</span></div>
     <div class="header-meta">
       <div class="period-chip"><span>Periodo</span><strong id="headerPeriod">Agosto 2026</strong></div>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Activar tema oscuro"><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.99 12.49A9 9 0 1 1 11.51 3a6 6 0 0 0 9.48 9.49Z"/></svg><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
@@ -703,58 +711,57 @@ html[data-theme="dark"] .info-callout{
   <main class="main" id="panorama" tabindex="-1">
     <div class="content">
       <div class="page-head">
-        <div><p class="eyebrow">Renza Free · Este mes</p><h1 id="dashboardTitle" tabindex="-1">Panorama de tu negocio</h1><p class="subtitle">Lo esencial para entender cuánto entró, cuánto salió y cómo va tu negocio en <strong id="periodName">Agosto 2026</strong>.</p><p class="profile-context" id="profileContext" hidden></p><p class="scope-note">Panorama simplificado y estimado. No sustituye un estado financiero completo.</p></div>
-        <button class="button button-secondary" id="editButton" type="button">Actualizar datos</button>
+        <div><p class="eyebrow">Renza Free · Este mes</p><h1 id="dashboardTitle" tabindex="-1">Panorama de tu negocio</h1><p class="subtitle">Lo que entró y salió del dinero de tu negocio en <strong id="periodName">este mes</strong>.</p><p class="profile-context" id="profileContext" hidden></p><p class="scope-note">Solo cuenta lo que registras aquí. No es tu saldo en el banco ni tu ganancia.</p></div>
+        <button class="button register-trigger" id="registerButton" type="button" data-register><svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>Registrar movimiento</button>
       </div>
 
       <section class="business-overview" id="businessOverview" aria-label="Resumen de tu negocio">
         <article class="panel cash-summary" id="cashSummary">
-          <div class="business-widget-head"><div><p class="eyebrow">Este mes</p><h2>Entró / Salió / Te quedó</h2></div><span class="business-widget-period" id="summaryPeriod">Agosto 2026</span></div>
-          <div class="cash-summary-body">
-            <div><span class="income-label">Entró</span><div class="income-value" id="summaryIncome">$100,000</div><p class="income-caption">Ventas y servicios del periodo.</p></div>
-            <div class="summary-ring-wrap"><div class="summary-ring" id="summaryRing" role="img" aria-label="De lo que entró, 82 por ciento salió y 18 por ciento quedó"><div class="summary-ring-center"><strong id="ringValue">18.0%</strong><span id="ringLabel">Te quedó</span></div></div></div>
+          <div class="business-widget-head"><div><p class="eyebrow">Este mes</p><h2>Entró / Salió / Te quedó</h2></div><div class="widget-head-meta"><button class="info-button" type="button" data-info="tequedo" aria-expanded="false" aria-controls="infoCallout" aria-label="Explicar «Te quedó»">i</button></div></div>
+          <div class="summary-empty" id="summaryEmpty" hidden>
+            <p class="summary-empty-title">Empieza con lo que pasó hoy.</p>
+            <p class="summary-empty-copy">Registra una venta, una compra o un pago. Aquí verás cuánto entró, cuánto salió y cuánto te quedó.</p>
+            <button class="button register-trigger" type="button" data-register><svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>Registrar mi primer movimiento</button>
           </div>
-          <div class="summary-stats">
-            <div class="summary-stat"><span class="summary-label">Salió</span><strong class="summary-value" id="summaryOutflow">$82,000</strong><span class="summary-share" id="summaryOutflowShare">82.0% de lo que entró</span></div>
-            <div class="summary-stat result-stat"><span class="summary-label" id="summaryResultLabel">Te quedó</span><strong class="summary-value" id="summaryResult">$18,000</strong><span class="summary-share" id="summaryResultShare">18.0% de lo que entró</span></div>
+          <div class="summary-filled" id="summaryFilled">
+            <div class="cash-summary-body">
+              <div><span class="income-label">Entró</span><div class="income-value" id="summaryIncome">$0</div><p class="income-caption">Dinero que entró a tu negocio este mes.</p></div>
+              <div class="summary-ring-wrap"><div class="summary-ring" id="summaryRing" role="img" aria-label="Este mes todavía no hay movimientos registrados"><div class="summary-ring-center"><strong id="ringValue">$0</strong><span id="ringLabel">Te quedó</span></div></div></div>
+            </div>
+            <div class="summary-stats">
+              <div class="summary-stat"><span class="summary-label">Salió</span><strong class="summary-value" id="summaryOutflow">$0</strong><span class="summary-share" id="summaryOutflowShare">Sin movimientos este mes</span></div>
+              <div class="summary-stat result-stat"><span class="summary-label" id="summaryResultLabel">Te quedó</span><strong class="summary-value" id="summaryResult">$0</strong><span class="summary-share" id="summaryResultShare">Sin movimientos este mes</span></div>
+            </div>
           </div>
         </article>
 
         <article class="panel trend-card" id="trendWidget">
           <div class="business-widget-head"><div><p class="eyebrow">Lo que te quedó</p><h2>¿Cómo voy?</h2></div><span class="business-widget-period">Mes a mes</span></div>
-          <div class="trend-current" id="trendValue">$18,000</div>
-          <p class="trend-change" id="trendChange">↑ 12.5% vs. mes anterior</p>
+          <div class="trend-current" id="trendValue">$0</div>
+          <p class="trend-change" id="trendChange"></p>
+          <p class="trend-empty" id="trendEmpty" hidden>Tu historial empieza con tu primer movimiento. Cada mes verás aquí cuánto te quedó.</p>
           <div class="trend-scroll" id="trendScroller" tabindex="0" aria-label="Historial mensual; desplázate horizontalmente para explorar meses anteriores">
             <ol class="trend-chart" id="trendChart" aria-label="Lo que quedó cada mes"></ol>
           </div>
         </article>
       </section>
 
-      <section class="kpi-grid legacy-kpis" aria-label="Detalle de indicadores financieros">
-        <article class="kpi-card"><div class="kpi-label"><span>Ingresos</span><button class="info-button" type="button" data-info="ingresos" aria-expanded="false" aria-controls="infoCallout" aria-label="Explicar ingresos y ventas">i</button></div><div class="kpi-value" id="kpiIngresos">$100,000</div><p class="kpi-context">Ventas y servicios generados en el periodo.</p></article>
-        <article class="kpi-card" id="grossKpi"><div class="kpi-label"><span>Utilidad bruta</span><button class="info-button" type="button" data-info="costos" aria-expanded="false" aria-controls="infoCallout" aria-label="Explicar costos directos">i</button></div><div class="kpi-value" id="kpiUtilidad">$45,000</div><p class="mobile-kpi-meta" id="mobileGrossMargin">45.0% de margen bruto</p><p class="kpi-context">Lo que quedó después de cubrir el costo directo.</p></article>
-        <article class="kpi-card"><div class="kpi-label"><span>Margen bruto</span><span aria-hidden="true">%</span></div><div class="kpi-value" id="kpiMargen">45.0%</div><p class="kpi-context" id="margenContext">De cada $100 vendidos, $45 quedaron después de cubrir el costo directo.</p></article>
-        <article class="kpi-card" id="resultKpi"><div class="kpi-label"><span>Resultado operativo estimado</span><span aria-hidden="true">≈</span></div><div class="kpi-value" id="kpiResultado">$18,000</div><p class="mobile-kpi-meta" id="mobileOperatingMargin">18.0% de tus ingresos</p><p class="kpi-context" id="resultadoContext">Después de costos y gastos, la operación dejó aproximadamente $18 de cada $100 vendidos.</p></article>
-      </section>
-
       <div class="dashboard-grid">
         <section class="panel pending-panel" id="pendientes" aria-labelledby="pendingTitle">
-          <div class="panel-head"><div><p class="eyebrow">Qué hacer ahora</p><h2 class="panel-title" id="pendingTitle">Qué merece tu atención</h2><p class="panel-copy">Revisa el dinero que todavía debe entrar y los compromisos que tienes por cubrir.</p></div><span class="panel-tag">Atención Renza</span></div>
+          <div class="panel-head"><div><p class="eyebrow">Qué hacer ahora</p><h2 class="panel-title" id="pendingTitle">Qué merece tu atención</h2><p class="panel-copy">El dinero que todavía debe entrar y lo que tienes por pagar.</p></div><span class="panel-tag">Atención Renza</span></div>
           <div class="pending-grid">
-            <article class="pending-card"><div class="pending-label"><div class="pending-title-row"><span class="pending-card-icon" aria-hidden="true"><svg class="semantic-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 8-8 8"/><path d="M16 16H8V8"/></svg></span><span>Te deben</span></div><button class="info-button" type="button" data-info="cxc" aria-expanded="false" aria-controls="infoCallout" aria-label="Explicar cuentas por cobrar">i</button></div><div class="pending-value" id="cxcValue">$20,000</div><p class="pending-share" id="cxcShare">20.0% de tus ingresos</p><p>Dinero que tus clientes todavía te deben.</p></article>
-            <article class="pending-card is-payable"><div class="pending-label"><div class="pending-title-row"><span class="pending-card-icon" aria-hidden="true"><svg class="semantic-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m8 16 8-8"/><path d="M8 8h8v8"/></svg></span><span>Debes</span></div><button class="info-button" type="button" data-info="cxp" aria-expanded="false" aria-controls="infoCallout" aria-label="Explicar cuentas por pagar">i</button></div><div class="pending-value" id="cxpValue">$14,000</div><p class="pending-share" id="cxpShare">14.0% de tus ingresos</p><p>Compromisos pendientes con proveedores u otros.</p></article>
+            <article class="pending-card"><div class="pending-label"><div class="pending-title-row"><span class="pending-card-icon" aria-hidden="true"><svg class="semantic-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 8-8 8"/><path d="M16 16H8V8"/></svg></span><span>Te deben</span></div><button class="info-button" type="button" data-info="cxc" aria-expanded="false" aria-controls="infoCallout" aria-label="Explicar «Te deben»">i</button></div><div class="pending-value" id="cxcValue">$0</div><p>Ventas que todavía no te pagan completas.</p></article>
+            <article class="pending-card is-payable"><div class="pending-label"><div class="pending-title-row"><span class="pending-card-icon" aria-hidden="true"><svg class="semantic-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m8 16 8-8"/><path d="M8 8h8v8"/></svg></span><span>Debes</span></div><button class="info-button" type="button" data-info="cxp" aria-expanded="false" aria-controls="infoCallout" aria-label="Explicar «Debes»">i</button></div><div class="pending-value" id="cxpValue">$0</div><p>Compras o gastos que todavía no pagas completos.</p></article>
           </div>
-          <div class="education-note"><svg class="semantic-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span>Tener un resultado positivo no significa necesariamente tener ese dinero disponible.</span></div>
+          <div class="education-note"><svg class="semantic-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span>Vender no siempre es cobrar: lo que te deben todavía no es dinero que entró.</span></div>
         </section>
 
         <section class="panel result-route" id="ruta" aria-labelledby="routeTitle">
-          <div class="panel-head"><div><p class="eyebrow">Detalle del mes</p><h2 class="panel-title" id="routeTitle">Cómo se construyó tu resultado</h2></div><span class="panel-tag">Explicación</span></div>
+          <div class="panel-head"><div><p class="eyebrow">Ventas y gastos del mes</p><h2 class="panel-title" id="routeTitle">¿Cómo le fue a tu negocio?</h2><p class="panel-copy">Lo que vendiste cuenta aunque todavía no te paguen.</p></div><span class="panel-tag">Segunda capa</span></div>
           <div class="route-grid">
-            <article class="route-card"><div><span class="route-step">01 · Punto de partida</span><div class="route-heading"><svg class="semantic-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h7.8a2 2 0 0 0 2-1.58L20.5 7H5.12"/></svg><h3>Vendiste</h3></div></div><div><div class="route-value" id="routeIngresos">$100,000</div><div class="route-meta">100% de tus ventas</div></div></article>
-            <div class="route-connector" aria-label="Costos"><div class="deduction-group"><div class="deduction-chip"><span class="deduction-label"><svg class="semantic-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>Costos</span><strong id="routeCostos">− $55,000</strong></div></div><div class="route-line" aria-hidden="true"></div></div>
-            <article class="route-card" id="grossRoute"><div><span class="route-step">02 · Después de costos</span><div class="route-heading"><svg class="semantic-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 16 4-5 4 3 5-7"/></svg><h3>Después de costos</h3></div></div><div><div class="route-value" id="routeUtilidad">$45,000</div><div class="route-meta" id="routeMargenBruto">45.0% de margen bruto</div></div></article>
-            <div class="route-connector" aria-label="Gastos de operación y administración"><div class="deduction-group"><div class="deduction-chip"><span class="deduction-label"><svg class="semantic-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2v20l2-2 2 2 2-2 2 2 2-2 2 2 2-2 2 2V2l-2 2-2-2-2 2-2-2-2 2-2-2-2 2Z"/><path d="M16 8h-6"/><path d="M16 12h-6"/></svg>Operación</span><strong id="routeOperacion">− $17,000</strong></div><div class="deduction-chip"><span class="deduction-label"><svg class="semantic-icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4M12 16h4M8 11h.01M8 16h.01"/></svg>Administración</span><strong id="routeAdministracion">− $10,000</strong></div></div><div class="route-line" aria-hidden="true"></div></div>
-            <article class="route-card route-final" id="routeFinal"><div><span class="route-step">03 · Resultado</span><div class="route-heading"><svg class="semantic-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3v4a1 1 0 0 1-1 1H5a2 2 0 0 1-2-2V5"/><path d="M16 12h6v4h-6a2 2 0 0 1 0-4Z"/></svg><h3>Te quedó</h3></div></div><div><div class="route-value" id="routeResultado">$18,000</div><div class="route-meta" id="routeMargenOperativo">18.0% de margen operativo</div></div></article>
+            <article class="route-card"><div><span class="route-step">01 · Vendiste</span><div class="route-heading"><svg class="semantic-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h7.8a2 2 0 0 0 2-1.58L20.5 7H5.12"/></svg><h3>Ventas del mes</h3></div></div><div><div class="route-value" id="routeVentas">$0</div><div class="route-meta" id="routeCobrado">Sin ventas este mes</div></div></article>
+            <div class="route-connector" aria-label="Compras y gastos del negocio"><div class="deduction-group"><div class="deduction-chip"><span class="deduction-label"><svg class="semantic-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2v20l2-2 2 2 2-2 2 2 2-2 2 2 2-2 2 2V2l-2 2-2-2-2 2-2-2-2 2-2-2-2 2Z"/><path d="M16 8h-6"/><path d="M16 12h-6"/></svg>Compras y gastos</span><strong id="routeGastos">− $0</strong></div></div><div class="route-line" aria-hidden="true"></div></div>
+            <article class="route-card route-pending" id="routeResult"><div><span class="route-step">02 · ¿Ganaste?</span><div class="route-heading"><svg class="semantic-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg><h3>Todavía no lo calculamos</h3></div></div><p class="route-explain" id="routeExplain">Cuando registres ventas y compras, aquí verás cómo se comparan.</p></article>
           </div>
         </section>
 
@@ -773,9 +780,11 @@ html[data-theme="dark"] .info-callout{
 <nav class="bottom-nav" id="bottomNav" aria-label="Navegación móvil">
   <a class="active" href="#panorama"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span class="nav-text">Panorama</span></a>
   <a href="#pendientes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 8h15M16 5l3 3-3 3M20 16H5M8 13l-3 3 3 3"/></svg><span class="nav-text">Pendientes</span></a>
-  <a href="#ruta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 5v14M5 12h7M12 12l-3-3M12 12l-3 3M12 19h7M19 19l-3-3M19 19l-3 3"/></svg><span class="nav-text">Ruta</span></a>
+  <a href="#ruta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 5v14M5 12h7M12 12l-3-3M12 12l-3 3M12 19h7M19 19l-3-3M19 19l-3 3"/></svg><span class="nav-text">Negocio</span></a>
   <a href="#impuestos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 11V8a5 5 0 0 1 10 0v3"/><rect x="4" y="11" width="16" height="10" rx="2"/></svg><span class="nav-text">Impuestos</span></a>
 </nav>
+<button class="fab" id="fabRegister" type="button" data-register aria-label="Registrar movimiento" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden><span id="toastText"></span><button class="toast-action" type="button" id="toastUndo">Deshacer</button></div>
 
 <dialog class="onboarding-dialog" id="onboardingDialog" aria-labelledby="onboardingQuestion">
   <section class="onboarding-shell">
@@ -787,13 +796,24 @@ html[data-theme="dark"] .info-callout{
   </section>
 </dialog>
 
-<dialog id="editDialog" aria-labelledby="dialogTitle">
-  <div class="dialog-head"><div><h2 id="dialogTitle">Actualiza tu panorama</h2><p>Seis cantidades y un periodo. Tus datos no se guardan al cerrar o recargar.</p></div><button class="icon-button" id="closeDialog" type="button" aria-label="Cerrar formulario">×</button></div>
-  <form class="edit-form" id="editForm">
-    <section class="capture-block" aria-labelledby="captureOne"><div class="capture-head"><div><p class="step-label">Paso 1 de 3</p><h3 id="captureOne">Lo que generó tu negocio</h3></div></div><div class="form-grid"><div class="field field-wide"><label class="field-label" for="inputPeriodo"><span>Periodo</span></label><input id="inputPeriodo" name="periodo" type="text" maxlength="40" required></div><div class="field field-wide"><div class="field-label"><label for="inputIngresos">Ingresos / ventas</label><button class="info-button" type="button" data-info="ingresos" aria-expanded="false" aria-controls="infoCallout" aria-label="Explicar ingresos y ventas">i</button></div><input id="inputIngresos" name="ingresos" type="number" min="0" step="1" inputmode="decimal" required></div></div></section>
-    <section class="capture-block" aria-labelledby="captureTwo"><div class="capture-head"><div><p class="step-label">Paso 2 de 3</p><h3 id="captureTwo">Lo que costó operarlo</h3></div></div><div class="form-grid"><div class="field field-wide"><div class="field-label"><label for="inputCostos">Costos directos / de operación</label><button class="info-button" type="button" data-info="costos" aria-expanded="false" aria-controls="infoCallout" aria-label="Explicar costos directos">i</button></div><input id="inputCostos" name="costosDirectos" type="number" min="0" step="1" inputmode="decimal" required></div><div class="field"><div class="field-label"><label for="inputGastosOperativos">Gastos operativos</label><button class="info-button" type="button" data-info="operativos" aria-expanded="false" aria-controls="infoCallout" aria-label="Explicar gastos operativos">i</button></div><input id="inputGastosOperativos" name="gastosOperativos" type="number" min="0" step="1" inputmode="decimal" required></div><div class="field"><div class="field-label"><label for="inputGastosAdministrativos">Gastos administrativos</label><button class="info-button" type="button" data-info="administrativos" aria-expanded="false" aria-controls="infoCallout" aria-label="Explicar gastos administrativos">i</button></div><input id="inputGastosAdministrativos" name="gastosAdministrativos" type="number" min="0" step="1" inputmode="decimal" required></div></div></section>
-    <section class="capture-block" aria-labelledby="captureThree"><div class="capture-head"><div><p class="step-label">Paso 3 de 3</p><h3 id="captureThree">Lo que queda pendiente</h3></div></div><div class="form-grid"><div class="field"><div class="field-label"><label for="inputCxc">Cuentas por cobrar</label><button class="info-button" type="button" data-info="cxc" aria-expanded="false" aria-controls="infoCallout" aria-label="Explicar cuentas por cobrar">i</button></div><input id="inputCxc" name="cxc" type="number" min="0" step="1" inputmode="decimal" required></div><div class="field"><div class="field-label"><label for="inputCxp">Cuentas por pagar</label><button class="info-button" type="button" data-info="cxp" aria-expanded="false" aria-controls="infoCallout" aria-label="Explicar cuentas por pagar">i</button></div><input id="inputCxp" name="cxp" type="number" min="0" step="1" inputmode="decimal" required></div></div></section>
-    <div class="dialog-actions"><button class="button button-secondary" id="cancelEdit" type="button">Cancelar</button><button class="button" type="submit">Ver mi panorama</button></div>
+<dialog class="register-dialog" id="registerDialog" aria-labelledby="registerTitle">
+  <section class="register-step" id="stepType">
+    <div class="sheet-head"><h2 id="registerTitle">¿Qué pasó hoy?</h2><button class="icon-button" type="button" data-close-register aria-label="Cerrar">×</button></div>
+    <div class="type-grid" role="group" aria-labelledby="registerTitle"><button class="type-option is-in" type="button" data-kind="venta"><span class="type-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span><span class="type-text"><span class="type-label">Vendí algo</span><span class="type-hint">Un producto o un servicio</span></span></button><button class="type-option" type="button" data-kind="compra"><span class="type-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 2v20l2-2 2 2 2-2 2 2 2-2 2 2 2-2 2 2V2l-2 2-2-2-2 2-2-2-2 2-2-2-2 2Z"/><path d="M16 8h-6"/><path d="M16 12h-6"/></svg></span><span class="type-text"><span class="type-label">Compré o gasté</span><span class="type-hint">Mercancía, renta, luz…</span></span></button><button class="type-option is-in" type="button" data-kind="cobro"><span class="type-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17"/><path d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 16 6 6"/><circle cx="16" cy="9" r="2.9"/><circle cx="6" cy="5" r="3"/></svg></span><span class="type-text"><span class="type-label">Me pagaron</span><span class="type-hint">Algo que te debían</span></span></button><button class="type-option" type="button" data-kind="pago"><span class="type-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg></span><span class="type-text"><span class="type-label">Pagué algo pendiente</span><span class="type-hint">Algo que debías</span></span></button></div>
+    <button class="other-link" type="button" data-kind="otro">Otro movimiento: préstamo, aportación, retiro…</button>
+  </section>
+  <form class="register-step" id="stepAmount" novalidate hidden>
+    <div class="sheet-head"><button class="icon-button" type="button" id="registerBack" aria-label="Volver a ¿Qué pasó hoy?"><svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg></button><h2 id="amountTitle">Vendí algo</h2><button class="icon-button" type="button" data-close-register aria-label="Cerrar">×</button></div>
+    <div class="amount-display" id="amountDisplay" tabindex="-1"><span class="amount-label" id="amountLabel">¿Cuánto fue?</span><output class="amount-value is-empty" id="amountValue" aria-live="polite">$0</output><p class="amount-hint" id="amountHint" hidden></p></div>
+    <div class="question" id="qDirection" hidden><span class="question-label" id="directionLabel">¿Entró o salió dinero?</span><div class="segmented" data-field="direction" role="group" aria-labelledby="directionLabel"><button type="button" data-value="entrada" aria-pressed="false">Entró</button><button type="button" data-value="salida" aria-pressed="false">Salió</button></div></div>
+    <div class="question" id="qStatus" hidden><span class="question-label" id="statusLabel">¿Ya te pagaron?</span><div class="segmented" data-field="status" role="group" aria-labelledby="statusLabel"><button type="button" data-value="total" aria-pressed="true">Sí, todo</button><button type="button" data-value="parcial" aria-pressed="false">Una parte</button><button type="button" data-value="pendiente" aria-pressed="false">Todavía no</button></div><label class="partial-field" id="partialField" hidden><span id="partialLabel">¿Cuánto te pagaron?</span><input id="partialInput" type="text" inputmode="decimal" autocomplete="off" placeholder="$0"></label></div>
+    <div class="question" id="qPurpose" hidden><span class="question-label" id="purposeLabel">¿Para qué fue?</span><div class="segmented" data-field="purpose" role="group" aria-labelledby="purposeLabel"><button type="button" data-value="negocio" aria-pressed="true">Para el negocio</button><button type="button" data-value="personal" aria-pressed="false">Personal</button></div></div>
+    <div class="question" id="qOrigin" hidden><span class="question-label" id="originLabel">¿Con qué dinero?</span><div class="segmented" data-field="origin" role="group" aria-labelledby="originLabel"><button type="button" data-value="negocio" aria-pressed="true">Del negocio</button><button type="button" data-value="personal" aria-pressed="false">Mío, personal</button></div></div>
+    <div class="meta-row"><div class="segmented segmented-compact" data-field="dateMode" role="group" aria-label="Fecha"><button type="button" data-value="hoy" aria-pressed="true">Hoy</button><button type="button" data-value="ayer" aria-pressed="false">Ayer</button><button type="button" data-value="otra" aria-pressed="false">Otra</button></div><input class="note-input" id="noteInput" type="text" maxlength="80" autocomplete="off" placeholder="Nota (opcional)" aria-label="Nota (opcional)"><input class="date-input" id="dateInput" type="date" aria-label="Fecha del movimiento" hidden></div>
+    <p class="form-error" id="formError" role="alert" hidden></p>
+    <div class="keypad" role="group" aria-label="Teclado numérico"><button class="key" type="button" data-key="1">1</button><button class="key" type="button" data-key="2">2</button><button class="key" type="button" data-key="3">3</button><button class="key" type="button" data-key="4">4</button><button class="key" type="button" data-key="5">5</button><button class="key" type="button" data-key="6">6</button><button class="key" type="button" data-key="7">7</button><button class="key" type="button" data-key="8">8</button><button class="key" type="button" data-key="9">9</button><button class="key" type="button" data-key="." aria-label="Punto decimal">.</button><button class="key" type="button" data-key="0">0</button><button class="key" type="button" data-key="back" aria-label="Borrar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5a2 2 0 0 0-1.344.519l-6.328 5.74a1 1 0 0 0 0 1.481l6.328 5.741A2 2 0 0 0 10 19h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2z"/><path d="m12 9 6 6"/><path d="m18 9-6 6"/></svg></button></div>
+    <button class="button save-button" type="submit" id="saveButton">Guardar</button>
+    <p class="save-note">Se guarda solo en este navegador.</p>
   </form>
 </dialog>
 
@@ -809,7 +829,9 @@ html[data-theme="dark"] .info-callout{
 <script>
 (function(){
   'use strict';
-  var data={periodo:'Agosto 2026',ingresos:100000,costosDirectos:55000,gastosOperativos:17000,gastosAdministrativos:10000,cxc:20000,cxp:14000};
+  var $=function(id){return document.getElementById(id)};
+
+  /* ===== Perfil y onboarding ===== */
   var userProfile={business_type:null,control_level:null,primary_goal:null,money_separated:null,revenue_band:null};
   var onboardingQuestions=[
     {key:'business_type',question:'¿Qué describe mejor tu negocio?',options:[['Productos','products'],['Servicios','services'],['Ambos','both'],['Otro','other']]},
@@ -840,45 +862,146 @@ html[data-theme="dark"] .info-callout{
   }
   var onboardingState=readOnboardingState();
   var widgetPriorityByGoal={monthly_progress:'trend-first'};
-  // DEMO_HISTORY_ONLY: sustituir este arreglo por historial real cuando exista una fuente de datos.
-  var monthlyHistory=[
-    {label:'Abr',value:12000},{label:'May',value:14500},{label:'Jun',value:13200},{label:'Jul',value:16000},{label:'Ago',value:0,isCurrent:true}
-  ];
-  var $=function(id){return document.getElementById(id)};
-  var numberFormat=new Intl.NumberFormat('es-MX',{maximumFractionDigits:0});
-  function money(value){return (value<0?'− $':'$')+numberFormat.format(Math.abs(Math.round(value)))}
-  function deduction(value){return '− '+money(Math.abs(value))}
+
+  /* ===== Fechas y dinero (importes en centavos enteros) ===== */
+  var MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  var MONTHS_SHORT=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+  function pad(n){return String(n).padStart(2,'0')}
+  function localDateKey(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
+  function todayKey(){return localDateKey(new Date())}
+  function yesterdayKey(){var d=new Date();d.setDate(d.getDate()-1);return localDateKey(d)}
+  function monthOf(dateKey){return dateKey.slice(0,7)}
+  function monthLabel(mk){var p=mk.split('-');return MONTHS[Number(p[1])-1]+' '+p[0]}
+  function monthShort(mk){return MONTHS_SHORT[Number(mk.split('-')[1])-1]}
+  function addMonths(mk,n){var p=mk.split('-').map(Number);var d=new Date(p[0],p[1]-1+n,1);return d.getFullYear()+'-'+pad(d.getMonth()+1)}
+  var fmt0=new Intl.NumberFormat('es-MX',{maximumFractionDigits:0});
+  var fmt2=new Intl.NumberFormat('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2});
+  function money(cents){var a=Math.abs(Math.round(cents));var body=a%100===0?fmt0.format(a/100):fmt2.format(a/100);return (cents<0?'− $':'$')+body}
   function percent(value){return (Number.isFinite(value)?value:0).toFixed(1)+'%'}
   function ratio(value,total){return total===0?0:value/total*100}
   function setText(id,value){$(id).textContent=value}
-  function setResultState(element,value){element.classList.toggle('is-negative',value<0);element.classList.toggle('is-positive',value>0)}
-  function shortPeriod(period){return String(period||'Mes').trim().slice(0,3).replace(/^./,function(letter){return letter.toUpperCase()})}
-  function renderBusinessSummary(totalOutflow,result){
+  function parseCents(text){
+    var clean=String(text||'').replace(/[^0-9.]/g,'');
+    if(!clean||clean==='.'){return 0}
+    var parts=clean.split('.');
+    var frac=(parts[1]||'').slice(0,2);while(frac.length<2){frac+='0'}
+    var cents=Number(parts[0]||'0')*100+Number(frac);
+    return Number.isSafeInteger(cents)?cents:NaN;
+  }
+
+  /* ===== Movimientos: almacenamiento local (alpha; se sustituye por backend) ===== */
+  var STORE_KEY='renza_free_movimientos_v1';
+  var KINDS=['venta','compra','cobro','pago','otro'];
+  function emptyStore(){return {version:1,movements:[],log:[]}}
+  function validMovement(m){
+    return !!m&&typeof m==='object'&&typeof m.id==='string'&&KINDS.indexOf(m.kind)>=0&&
+      Number.isSafeInteger(m.amount)&&m.amount>0&&Number.isSafeInteger(m.paidNow)&&m.paidNow>=0&&m.paidNow<=m.amount&&
+      typeof m.date==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(m.date);
+  }
+  function readStore(){
+    try{
+      var raw=localStorage.getItem(STORE_KEY);if(!raw){return emptyStore()}
+      var parsed=JSON.parse(raw);
+      if(!parsed||parsed.version!==1||!Array.isArray(parsed.movements)){return emptyStore()}
+      return {version:1,movements:parsed.movements.filter(validMovement),log:Array.isArray(parsed.log)?parsed.log:[]};
+    }catch(error){return emptyStore()}
+  }
+  var store=readStore();
+  var storageOk=true;
+  function persist(){try{localStorage.setItem(STORE_KEY,JSON.stringify(store));storageOk=true}catch(error){storageOk=false}}
+  function newId(){
+    if(window.crypto&&typeof window.crypto.randomUUID==='function'){return window.crypto.randomUUID()}
+    return 'm-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10);
+  }
+  function logEvent(action,id){store.log.push({at:new Date().toISOString(),actor:'usuario',action:action,movementId:id})}
+  function activeMovements(){return store.movements.filter(function(m){return !m.voidedAt})}
+
+  /* ===== Reglas de dinero (PRODUCT_SPEC BR-FIN-002/003/004, BR-MOV-003) ===== */
+  // Entró / Salió: solo dinero del negocio que efectivamente se movió.
+  function cashIn(m){
+    if(m.kind==='venta'){return m.paidNow}
+    if(m.kind==='cobro'){return m.amount}
+    if(m.kind==='otro'&&m.direction==='entrada'){return m.amount}
+    return 0;
+  }
+  function cashOut(m){
+    if(m.kind==='compra'){return m.origin==='personal'?0:m.paidNow}
+    if(m.kind==='pago'){return m.origin==='personal'?0:m.amount}
+    if(m.kind==='otro'&&m.direction==='salida'){return m.amount}
+    return 0;
+  }
+  function monthSummary(mk,list){
+    var s={entro:0,salio:0,ventas:0,cobradoVentas:0,gastosNegocio:0};
+    list.forEach(function(m){
+      if(monthOf(m.date)!==mk){return}
+      s.entro+=cashIn(m);s.salio+=cashOut(m);
+      if(m.kind==='venta'){s.ventas+=m.amount;s.cobradoVentas+=m.paidNow}
+      if(m.kind==='compra'&&m.purpose!=='personal'){s.gastosNegocio+=m.amount}
+    });
+    return s;
+  }
+  // Pendientes acumulados en orden cronológico. Un cobro o pago sin pendiente previo
+  // (p. ej. de antes de usar Renza) no deja saldo negativo ni descuenta pendientes futuros.
+  function pendingBalances(list){
+    var sorted=list.slice().sort(function(a,b){
+      if(a.date!==b.date){return a.date<b.date?-1:1}
+      return a.createdAt<b.createdAt?-1:(a.createdAt>b.createdAt?1:0);
+    });
+    var teDeben=0,debes=0;
+    sorted.forEach(function(m){
+      if(m.kind==='venta'){teDeben+=m.amount-m.paidNow}
+      else if(m.kind==='cobro'){teDeben=Math.max(0,teDeben-m.amount)}
+      else if(m.kind==='compra'){debes+=m.amount-m.paidNow}
+      else if(m.kind==='pago'){debes=Math.max(0,debes-m.amount)}
+    });
+    return {teDeben:teDeben,debes:debes};
+  }
+  function buildHistory(list,currentMk){
+    if(!list.length){return []}
+    var first=list.reduce(function(min,m){var mk=monthOf(m.date);return mk<min?mk:min},currentMk);
+    var earliest=addMonths(currentMk,-11);
+    var start=first<earliest?earliest:first;
+    var history=[];
+    for(var mk=start;mk<=currentMk;mk=addMonths(mk,1)){
+      var s=monthSummary(mk,list);
+      history.push({label:monthShort(mk),value:s.entro-s.salio,isCurrent:mk===currentMk});
+    }
+    return history;
+  }
+
+  /* ===== Render ===== */
+  function renderBusinessSummary(entro,salio){
     var summary=$('cashSummary');
     var ring=$('summaryRing');
-    var hasIncome=data.ingresos>0;
+    var result=entro-salio;
+    var hasIncome=entro>0;
     var isDeficit=result<0;
-    var outflowPct=hasIncome?ratio(totalOutflow,data.ingresos):null;
-    var resultPct=hasIncome?ratio(Math.abs(result),data.ingresos):null;
+    var outflowPct=hasIncome?ratio(salio,entro):null;
+    var resultPct=hasIncome?ratio(Math.abs(result),entro):null;
     summary.classList.toggle('is-deficit',isDeficit);
     summary.classList.toggle('is-zero',!hasIncome&&!isDeficit);
-    setText('summaryPeriod',data.periodo);
-    setText('summaryIncome',money(data.ingresos));
-    setText('summaryOutflow',money(totalOutflow));
+    setText('summaryIncome',money(entro));
+    setText('summaryOutflow',money(salio));
     setText('summaryResultLabel',isDeficit?'Te faltaron':'Te quedó');
     setText('summaryResult',money(Math.abs(result)));
     if(!hasIncome){
       ring.style.setProperty('--outflow-share','0%');
-      setText('ringValue',isDeficit?'Déficit':'Sin base');setText('ringLabel',isDeficit?'Salió más':'Sin porcentaje');
-      setText('summaryOutflowShare','Sin porcentaje comparable');setText('summaryResultShare',isDeficit?'Salió más de lo que entró':'Sin porcentaje comparable');
-      ring.setAttribute('aria-label',isDeficit?'No entró dinero y salieron '+money(totalOutflow):'No entró dinero y no hay porcentaje comparable');
+      if(isDeficit){
+        setText('ringValue',money(Math.abs(result)));setText('ringLabel','Te faltaron');
+        setText('summaryOutflowShare','No entró dinero este mes');setText('summaryResultShare','Salió más de lo que entró');
+        ring.setAttribute('aria-label','No entró dinero y salieron '+money(salio));
+      }else{
+        setText('ringValue','$0');setText('ringLabel','Sin movimientos');
+        setText('summaryOutflowShare','Sin movimientos este mes');setText('summaryResultShare','Sin movimientos este mes');
+        ring.setAttribute('aria-label','Este mes todavía no hay movimientos registrados');
+      }
       return;
     }
     if(isDeficit){
       ring.style.setProperty('--outflow-share','100%');
       setText('ringValue',money(Math.abs(result)));setText('ringLabel','Te faltaron');
       setText('summaryOutflowShare',percent(outflowPct)+' de lo que entró');setText('summaryResultShare','Salió más de lo que entró');
-      ring.setAttribute('aria-label','Salió '+money(totalOutflow)+', más que los '+money(data.ingresos)+' que entraron; faltaron '+money(Math.abs(result)));
+      ring.setAttribute('aria-label','Salió '+money(salio)+', más que los '+money(entro)+' que entraron; faltaron '+money(Math.abs(result)));
       return;
     }
     ring.style.setProperty('--outflow-share',String(Math.max(0,Math.min(100,outflowPct)))+'%');
@@ -886,17 +1009,19 @@ html[data-theme="dark"] .info-callout{
     setText('summaryOutflowShare',percent(outflowPct)+' de lo que entró');setText('summaryResultShare',percent(resultPct)+' de lo que entró');
     ring.setAttribute('aria-label','De lo que entró, '+percent(outflowPct)+' salió y '+percent(resultPct)+' quedó');
   }
-  function renderTrend(currentResult){
-    var history=monthlyHistory.map(function(item){return {label:item.label,value:item.value,isCurrent:item.isCurrent}});
-    history[history.length-1]={label:shortPeriod(data.periodo),value:currentResult,isCurrent:true};
-    var previous=history.length>1?history[history.length-2].value:null;
-    setText('trendValue',money(currentResult));
+  function renderTrend(history){
+    var empty=history.length===0;
+    $('trendEmpty').hidden=!empty;$('trendScroller').hidden=empty;$('trendValue').hidden=empty;
     var change=$('trendChange');
-    change.className='trend-change';
-    if(previous===null||previous===0){
-      change.textContent='Sin comparación disponible';change.classList.add('is-neutral');
-    }else{
-      var variation=(currentResult-previous)/Math.abs(previous)*100;
+    change.className='trend-change';change.hidden=empty;
+    if(empty){$('trendChart').replaceChildren();return}
+    var current=history[history.length-1].value;
+    var previous=history.length>1?history[history.length-2].value:null;
+    setText('trendValue',money(current));
+    if(previous===null){change.textContent='Tu historial empieza este mes';change.classList.add('is-neutral')}
+    else if(previous===0){change.textContent='Sin comparación disponible';change.classList.add('is-neutral')}
+    else{
+      var variation=(current-previous)/Math.abs(previous)*100;
       if(variation>0){change.textContent='↑ '+percent(Math.abs(variation))+' vs. mes anterior'}
       else if(variation<0){change.textContent='↓ '+percent(Math.abs(variation))+' vs. mes anterior';change.classList.add('is-down')}
       else{change.textContent='Sin cambio vs. mes anterior';change.classList.add('is-neutral')}
@@ -914,38 +1039,30 @@ html[data-theme="dark"] .info-callout{
     });
     window.requestAnimationFrame(function(){$('trendScroller').scrollLeft=$('trendScroller').scrollWidth});
   }
+  function renderRoute(s){
+    setText('routeVentas',money(s.ventas));
+    setText('routeCobrado',s.ventas>0?'Te pagaron '+money(s.cobradoVentas)+' de esto':'Sin ventas este mes');
+    setText('routeGastos','− '+money(s.gastosNegocio));
+    setText('routeExplain',s.ventas===0&&s.gastosNegocio===0
+      ?'Cuando registres ventas y compras, aquí verás cómo se comparan.'
+      :'Vender '+money(s.ventas)+' y gastar '+money(s.gastosNegocio)+' no es lo mismo que ganar la diferencia: parte de lo que compraste puede seguir en tu negocio. Para no darte un número equivocado, todavía no lo restamos.');
+  }
   function render(){
-    var gastosTotales=data.gastosOperativos+data.gastosAdministrativos;
-    var utilidadBruta=data.ingresos-data.costosDirectos;
-    var margenBruto=ratio(utilidadBruta,data.ingresos);
-    var resultadoOperativo=utilidadBruta-gastosTotales;
-    var margenOperativo=ratio(resultadoOperativo,data.ingresos);
-    var cxcPct=ratio(data.cxc,data.ingresos);
-    var cxpPct=ratio(data.cxp,data.ingresos);
-    setText('headerPeriod',data.periodo);setText('periodName',data.periodo);
-    setText('kpiIngresos',money(data.ingresos));setText('kpiUtilidad',money(utilidadBruta));
-    setText('kpiMargen',percent(margenBruto));setText('kpiResultado',money(resultadoOperativo));
-    setText('mobileGrossMargin',percent(margenBruto)+' de margen bruto');setText('mobileOperatingMargin',percent(margenOperativo)+' de tus ingresos');
-    setText('routeIngresos',money(data.ingresos));setText('routeCostos',deduction(data.costosDirectos));
-    setText('routeUtilidad',money(utilidadBruta));setText('routeMargenBruto',percent(margenBruto)+' de margen bruto');
-    setText('routeOperacion',deduction(data.gastosOperativos));setText('routeAdministracion',deduction(data.gastosAdministrativos));
-    setText('routeResultado',money(resultadoOperativo));setText('routeMargenOperativo',percent(margenOperativo)+' de margen operativo');
-    setText('cxcValue',money(data.cxc));setText('cxpValue',money(data.cxp));
-    setText('cxcShare',percent(cxcPct)+' de tus ingresos');setText('cxpShare',percent(cxpPct)+' de tus ingresos');
-    renderBusinessSummary(data.costosDirectos+gastosTotales,resultadoOperativo);
-    renderTrend(resultadoOperativo);
-    var showContext=data.ingresos>0;
-    $('margenContext').hidden=!showContext;$('resultadoContext').hidden=!showContext;
-    if(showContext){
-      var brutoPorCien=Math.abs(Math.round(margenBruto));
-      var operativoPorCien=Math.abs(Math.round(margenOperativo));
-      setText('margenContext',utilidadBruta>=0?'De cada $100 vendidos, $'+numberFormat.format(brutoPorCien)+' quedaron después de cubrir el costo directo.':'El costo directo superó las ventas por $'+numberFormat.format(brutoPorCien)+' de cada $100 vendidos.');
-      setText('resultadoContext',resultadoOperativo>=0?'Después de costos y gastos, la operación dejó aproximadamente $'+numberFormat.format(operativoPorCien)+' de cada $100 vendidos.':'Costos y gastos superaron las ventas por aproximadamente $'+numberFormat.format(operativoPorCien)+' de cada $100 vendidos.');
-    }
-    setResultState($('grossKpi'),utilidadBruta);setResultState($('grossRoute'),utilidadBruta);
-    setResultState($('resultKpi'),resultadoOperativo);setResultState($('routeFinal'),resultadoOperativo);
+    var list=activeMovements();
+    var mk=monthOf(todayKey());
+    var label=monthLabel(mk);
+    setText('headerPeriod',label);setText('periodName',label);
+    var isEmpty=list.length===0;
+    $('summaryEmpty').hidden=!isEmpty;$('summaryFilled').hidden=isEmpty;
+    var s=monthSummary(mk,list);
+    renderBusinessSummary(s.entro,s.salio);
+    renderTrend(buildHistory(list,mk));
+    var pending=pendingBalances(list);
+    setText('cxcValue',money(pending.teDeben));setText('cxpValue',money(pending.debes));
+    renderRoute(s);
   }
 
+  /* ===== Tema ===== */
   var themeToggle=$('themeToggle');
   var theme='light';
   try{theme=localStorage.getItem('renza-theme')==='dark'?'dark':'light'}catch(error){theme='light'}
@@ -959,6 +1076,7 @@ html[data-theme="dark"] .info-callout{
   });
   applyTheme();
 
+  /* ===== Onboarding ===== */
   var onboardingDialog=$('onboardingDialog');
   var onboardingIndex=onboardingState.onboarding_step;
   function persistOnboardingState(){
@@ -973,11 +1091,11 @@ html[data-theme="dark"] .info-callout{
   }
   function showWelcome(){
     document.body.classList.add('is-welcome');
-    $('welcomeScreen').hidden=false;$('appSidebar').hidden=true;$('panorama').hidden=true;$('bottomNav').hidden=true;
+    $('welcomeScreen').hidden=false;$('appSidebar').hidden=true;$('panorama').hidden=true;$('bottomNav').hidden=true;$('fabRegister').hidden=true;
   }
   function showDashboard(){
     document.body.classList.remove('is-welcome');
-    $('welcomeScreen').hidden=true;$('appSidebar').hidden=false;$('panorama').hidden=false;$('bottomNav').hidden=false;
+    $('welcomeScreen').hidden=true;$('appSidebar').hidden=false;$('panorama').hidden=false;$('bottomNav').hidden=false;$('fabRegister').hidden=false;
   }
   function applyProfilePriority(){
     var priority=widgetPriorityByGoal[userProfile.primary_goal]||'summary-first';
@@ -1025,6 +1143,7 @@ html[data-theme="dark"] .info-callout{
     if(onboardingIndex>0){onboardingIndex-=1;onboardingState.onboarding_step=onboardingIndex;persistOnboardingState();renderOnboardingStep()}
   });
 
+  /* ===== Navegación móvil ===== */
   var bottomNav=document.querySelector('.bottom-nav');
   var mobileNavQuery=window.matchMedia('(max-width:640px)');
   var lastScrollY=Math.max(window.scrollY,0);
@@ -1068,36 +1187,198 @@ html[data-theme="dark"] .info-callout{
   bottomNav.addEventListener('click',expandBottomNav);
   if(typeof mobileNavQuery.addEventListener==='function'){mobileNavQuery.addEventListener('change',expandBottomNav)}else{mobileNavQuery.addListener(expandBottomNav)}
 
-  var dialog=$('editDialog');
-  function openEditor(){
-    expandBottomNav();
-    $('inputPeriodo').value=data.periodo;$('inputIngresos').value=data.ingresos;
-    $('inputCostos').value=data.costosDirectos;$('inputGastosOperativos').value=data.gastosOperativos;
-    $('inputGastosAdministrativos').value=data.gastosAdministrativos;$('inputCxc').value=data.cxc;$('inputCxp').value=data.cxp;
-    if(typeof dialog.showModal==='function'){dialog.showModal()}else{dialog.setAttribute('open','')}
+  /* ===== Registrar movimiento (pilar R) ===== */
+  var registerDialog=$('registerDialog');
+  var stepType=$('stepType');
+  var stepAmount=$('stepAmount');
+  var draft=null;
+  var amountStr='';
+  var lastTrigger=null;
+  var KIND_COPY={
+    venta:{title:'Vendí algo',amount:'¿Por cuánto vendiste?',status:'¿Ya te pagaron?',partial:'¿Cuánto te pagaron?',hint:''},
+    compra:{title:'Compré o gasté',amount:'¿Cuánto fue?',status:'¿Ya lo pagaste?',partial:'¿Cuánto pagaste?',hint:''},
+    cobro:{title:'Me pagaron',amount:'¿Cuánto te pagaron?',hint:'De algo que te debían. No cuenta como venta nueva.'},
+    pago:{title:'Pagué algo pendiente',amount:'¿Cuánto pagaste?',hint:'De algo que debías. No cuenta como compra nueva.'},
+    otro:{title:'Otro movimiento',amount:'¿Cuánto fue?',hint:'Préstamo, aportación, retiro… No cuenta como venta ni como gasto.'}
+  };
+  function segmentedGroup(field){return stepAmount.querySelector('.segmented[data-field="'+field+'"]')}
+  function setPressed(group,value){
+    group.querySelectorAll('button[data-value]').forEach(function(button){button.setAttribute('aria-pressed',String(button.getAttribute('data-value')===value))});
   }
-  function closeEditor(){if(typeof dialog.close==='function'){dialog.close()}else{dialog.removeAttribute('open')}}
-  $('editButton').addEventListener('click',openEditor);
-  $('closeDialog').addEventListener('click',closeEditor);
-  $('cancelEdit').addEventListener('click',closeEditor);
-  dialog.addEventListener('click',function(event){if(event.target===dialog){closeEditor()}});
-  $('editForm').addEventListener('submit',function(event){
+  function showError(message){var error=$('formError');error.textContent=message;error.hidden=false}
+  function hideError(){$('formError').hidden=true}
+  function showStep(step){stepType.hidden=step!=='type';stepAmount.hidden=step!=='amount'}
+  function syncQuestions(){
+    var kind=draft.kind;
+    $('qStatus').hidden=!(kind==='venta'||kind==='compra');
+    $('partialField').hidden=draft.status!=='parcial';
+    $('qPurpose').hidden=kind!=='compra';
+    $('qOrigin').hidden=!((kind==='compra'&&draft.status!=='pendiente')||kind==='pago');
+    $('qDirection').hidden=kind!=='otro';
+    $('dateInput').hidden=draft.dateMode!=='otra';
+    ['status','purpose','origin','direction','dateMode'].forEach(function(field){var group=segmentedGroup(field);if(group){setPressed(group,draft[field])}});
+  }
+  function updateAmountDisplay(){
+    var output=$('amountValue');
+    if(!amountStr){output.textContent='$0';output.classList.add('is-empty');return}
+    output.classList.remove('is-empty');
+    var parts=amountStr.split('.');
+    output.textContent='$'+fmt0.format(Number(parts[0]||'0'))+(parts.length===2?'.'+parts[1]:'');
+  }
+  function pressKey(key){
+    if(key==='back'){amountStr=amountStr.slice(0,-1)}
+    else if(key==='.'){if(amountStr.indexOf('.')<0){amountStr=(amountStr||'0')+'.'}}
+    else{
+      var parts=amountStr.split('.');
+      if(parts.length===2){if(parts[1].length>=2){return}}
+      else{if(parts[0].length>=9){return}if(amountStr==='0'){amountStr=''}}
+      amountStr+=key;
+    }
+    hideError();updateAmountDisplay();
+  }
+  function openRegister(trigger){
+    lastTrigger=trigger||null;expandBottomNav();hideToast();showStep('type');
+    if(typeof registerDialog.showModal==='function'){registerDialog.showModal()}else{registerDialog.setAttribute('open','')}
+    window.requestAnimationFrame(function(){var first=stepType.querySelector('.type-option');if(first){first.focus()}});
+  }
+  function onRegisterClosed(){
+    draft=null;amountStr='';hideError();
+    if(lastTrigger&&document.contains(lastTrigger)&&!lastTrigger.closest('[hidden]')){lastTrigger.focus({preventScroll:true})}
+    lastTrigger=null;
+  }
+  function closeRegister(){
+    if(typeof registerDialog.close==='function'){registerDialog.close()}else{registerDialog.removeAttribute('open');onRegisterClosed()}
+  }
+  function startDraft(kind){
+    var copy=KIND_COPY[kind];
+    draft={kind:kind,status:(kind==='venta'||kind==='compra')?'total':null,purpose:kind==='compra'?'negocio':null,origin:(kind==='compra'||kind==='pago')?'negocio':null,direction:null,dateMode:'hoy',date:todayKey()};
+    amountStr='';
+    setText('amountTitle',copy.title);setText('amountLabel',copy.amount);
+    var hint=$('amountHint');hint.textContent=copy.hint;hint.hidden=!copy.hint;
+    if(copy.status){setText('statusLabel',copy.status);setText('partialLabel',copy.partial)}
+    $('partialInput').value='';$('noteInput').value='';
+    $('noteInput').placeholder=kind==='otro'?'¿Qué fue? Ej. préstamo':'Nota (opcional)';
+    var dateInput=$('dateInput');dateInput.max=todayKey();dateInput.value=draft.date;
+    hideError();updateAmountDisplay();syncQuestions();showStep('amount');
+    window.requestAnimationFrame(function(){$('amountDisplay').focus()});
+  }
+  document.querySelectorAll('[data-register]').forEach(function(button){button.addEventListener('click',function(){openRegister(button)})});
+  stepType.querySelectorAll('[data-kind]').forEach(function(button){button.addEventListener('click',function(){startDraft(button.getAttribute('data-kind'))})});
+  $('registerBack').addEventListener('click',function(){
+    draft=null;hideError();showStep('type');
+    var first=stepType.querySelector('.type-option');if(first){first.focus()}
+  });
+  registerDialog.querySelectorAll('[data-close-register]').forEach(function(button){button.addEventListener('click',closeRegister)});
+  registerDialog.addEventListener('click',function(event){if(event.target===registerDialog){closeRegister()}});
+  registerDialog.addEventListener('close',onRegisterClosed);
+  stepAmount.querySelectorAll('.segmented[data-field]').forEach(function(group){
+    var field=group.getAttribute('data-field');
+    group.addEventListener('click',function(event){
+      var button=event.target.closest('button[data-value]');if(!button||!draft){return}
+      var value=button.getAttribute('data-value');draft[field]=value;
+      if(field==='dateMode'){
+        if(value==='hoy'){draft.date=todayKey()}
+        else if(value==='ayer'){draft.date=yesterdayKey()}
+        else{draft.date=$('dateInput').value||todayKey()}
+      }
+      hideError();syncQuestions();
+      if(field==='status'&&value==='parcial'){$('partialInput').focus()}
+      if(field==='dateMode'&&value==='otra'){$('dateInput').focus()}
+    });
+  });
+  $('dateInput').addEventListener('change',function(){if(draft){draft.date=$('dateInput').value;hideError()}});
+  stepAmount.querySelector('.keypad').addEventListener('click',function(event){
+    var key=event.target.closest('[data-key]');if(key){pressKey(key.getAttribute('data-key'))}
+  });
+  registerDialog.addEventListener('keydown',function(event){
+    if(stepAmount.hidden||!draft){return}
+    var target=event.target;
+    if(target&&(target.tagName==='INPUT'||target.tagName==='TEXTAREA')){return}
+    if(event.metaKey||event.ctrlKey||event.altKey){return}
+    if(/^[0-9]$/.test(event.key)){pressKey(event.key);event.preventDefault()}
+    else if(event.key==='.'||event.key===','){pressKey('.');event.preventDefault()}
+    else if(event.key==='Backspace'){pressKey('back');event.preventDefault()}
+    else if(event.key==='Enter'&&target===$('amountDisplay')){
+      event.preventDefault();
+      if(typeof stepAmount.requestSubmit==='function'){stepAmount.requestSubmit()}else{$('saveButton').click()}
+    }
+  });
+  stepAmount.addEventListener('submit',function(event){
     event.preventDefault();
-    data={
-      periodo:$('inputPeriodo').value.trim(),ingresos:Number($('inputIngresos').value),
-      costosDirectos:Number($('inputCostos').value),gastosOperativos:Number($('inputGastosOperativos').value),
-      gastosAdministrativos:Number($('inputGastosAdministrativos').value),cxc:Number($('inputCxc').value),cxp:Number($('inputCxp').value)
+    if(!draft||$('saveButton').disabled){return}
+    var amount=parseCents(amountStr);
+    if(!amount||!Number.isSafeInteger(amount)){showError('Escribe cuánto fue.');return}
+    if(draft.kind==='otro'&&!draft.direction){showError('Elige si entró o salió dinero.');return}
+    var date=draft.date;
+    if(!/^\d{4}-\d{2}-\d{2}$/.test(date||'')){showError('Elige una fecha válida.');return}
+    if(date>todayKey()){showError('La fecha no puede ser después de hoy.');return}
+    var isDeal=draft.kind==='venta'||draft.kind==='compra';
+    var paidNow=amount;
+    if(isDeal&&draft.status==='pendiente'){paidNow=0}
+    if(isDeal&&draft.status==='parcial'){
+      var partial=parseCents($('partialInput').value);
+      if(!partial||!Number.isSafeInteger(partial)){showError(draft.kind==='venta'?'Escribe cuánto te pagaron.':'Escribe cuánto pagaste.');return}
+      if(partial>=amount){showError('Debe ser menor a '+money(amount)+'. Si fue todo, elige «Sí, todo».');return}
+      paidNow=partial;
+    }
+    var movement={
+      id:newId(),kind:draft.kind,amount:amount,paidNow:paidNow,
+      status:isDeal?draft.status:null,
+      purpose:draft.kind==='compra'?draft.purpose:null,
+      origin:(draft.kind==='pago'||(draft.kind==='compra'&&draft.status!=='pendiente'))?draft.origin:null,
+      direction:draft.kind==='otro'?draft.direction:null,
+      date:date,note:$('noteInput').value.trim().slice(0,80),
+      createdAt:new Date().toISOString(),voidedAt:null
     };
-    render();closeEditor();
+    $('saveButton').disabled=true;
+    store.movements.push(movement);logEvent('crear',movement.id);persist();
+    render();flashSummary();closeRegister();
+    showToast(toastFor(movement),movement.id);
+    $('saveButton').disabled=false;
+  });
+  function toastFor(m){
+    var names={venta:'Venta guardada',compra:'Compra guardada',cobro:'Cobro guardado',pago:'Pago guardado',otro:'Movimiento guardado'};
+    var parts=[];
+    var moneyIn=cashIn(m),moneyOut=cashOut(m),pending=m.amount-m.paidNow;
+    if(moneyIn){parts.push('Entró '+money(moneyIn))}
+    if(moneyOut){parts.push('Salió '+money(moneyOut))}
+    if(m.kind==='venta'&&pending>0){parts.push('Te deben '+money(pending))}
+    if(m.kind==='compra'&&pending>0){parts.push('Debes '+money(pending))}
+    if(m.origin==='personal'&&m.paidNow>0){parts.push('con tu dinero, no salió del negocio')}
+    var text=names[m.kind]+(parts.length?' · '+parts.join(' · '):'');
+    if(!storageOk){text+=' · Este navegador no permitió guardarlo'}
+    return text;
+  }
+  function flashSummary(){
+    var summary=$('cashSummary');
+    summary.classList.remove('is-updated');void summary.offsetWidth;summary.classList.add('is-updated');
+    window.setTimeout(function(){summary.classList.remove('is-updated')},700);
+  }
+
+  /* ===== Aviso con Deshacer (cancelación trazable, no borrado) ===== */
+  var toastTimer=0;
+  var toastMovementId=null;
+  function showToast(text,movementId){
+    toastMovementId=movementId||null;
+    $('toastUndo').hidden=!toastMovementId;
+    $('toast').hidden=false;setText('toastText',text);
+    window.clearTimeout(toastTimer);toastTimer=window.setTimeout(hideToast,6000);
+  }
+  function hideToast(){$('toast').hidden=true;toastMovementId=null}
+  $('toastUndo').addEventListener('click',function(){
+    var movement=store.movements.find(function(m){return m.id===toastMovementId});
+    if(movement&&!movement.voidedAt){
+      movement.voidedAt=new Date().toISOString();movement.voidReason='deshacer';
+      logEvent('cancelar',movement.id);persist();render();
+    }
+    showToast('Movimiento cancelado.',null);
   });
 
+  /* ===== Explicaciones ===== */
   var explanations={
-    ingresos:{title:'Ingresos / ventas',what:'Ventas o servicios generados durante el periodo.',example:'Si vendiste $100,000 y todavía te deben $20,000, tus ventas siguen siendo $100,000. Vender no siempre significa haber cobrado.',not:'Préstamos, aportaciones personales o dinero que todavía no corresponde a una venta realizada.'},
-    costos:{title:'Costos directos / de operación',what:'Lo que está directamente relacionado con producir, comprar o prestar aquello que vendes.',example:'Mercancía, materia prima o insumos directamente utilizados para prestar el servicio.',not:'Administración o gastos generales.'},
-    operativos:{title:'Gastos operativos',what:'Gastos necesarios para mantener funcionando la operación que no son el costo directo de lo vendido.',example:'Logística, mantenimiento operativo, comisiones comerciales u otros gastos operativos.',not:'El costo directo de la mercancía o los gastos administrativos generales.'},
-    administrativos:{title:'Gastos administrativos',what:'Gastos relacionados con administrar y dar soporte al negocio.',example:'Administración, papelería, oficina o servicios profesionales administrativos.',not:'Mercancía, materia prima o costos directamente ligados a lo que vendes.'},
-    cxc:{title:'Cuentas por cobrar',what:'Ventas realizadas que todavía no has cobrado.',example:'Una venta puede generar utilidad aunque el dinero todavía no haya entrado.',not:'Cotizaciones, ventas futuras o dinero que ya recibiste.'},
-    cxp:{title:'Cuentas por pagar',what:'Compromisos pendientes de pago con proveedores u otros relacionados con la operación.',example:'Una factura de proveedor que ya recibiste y aún está pendiente de pago.',not:'Compras futuras o compromisos que ya pagaste.'}
+    tequedo:{title:'Te quedó',what:'Lo que entró menos lo que salió del dinero de tu negocio este mes, según lo que registraste aquí.',example:'Si te pagaron $10,000 y pagaste $7,000, te quedaron $3,000.',not:'No es tu saldo en el banco ni tu ganancia. Una venta que todavía no te pagan no es dinero que entró.'},
+    cxc:{title:'Te deben',what:'Ventas que hiciste y que todavía no te pagan completas.',example:'Vendiste $1,000 y te pagaron $600: te deben $400. Cuando te paguen, registra «Me pagaron».',not:'Cotizaciones o ventas que todavía no haces.'},
+    cxp:{title:'Debes',what:'Compras o gastos que ya hiciste y que todavía no pagas completos.',example:'Compraste $500 de mercancía a crédito: debes $500. Cuando pagues, registra «Pagué algo pendiente».',not:'Compras que ya pagaste o que todavía no haces.'}
   };
   var infoDialog=$('infoDialog');
   var infoTrigger=null;
@@ -1120,6 +1401,8 @@ html[data-theme="dark"] .info-callout{
   infoDialog.addEventListener('click',function(event){if(event.target===infoDialog){closeInfo(true)}});
   infoDialog.addEventListener('cancel',function(event){event.preventDefault();closeInfo(true)});
   $('taxCta').addEventListener('click',function(){$('taxStatus').hidden=false});
+
+  /* ===== Arranque ===== */
   render();
   hydrateUserProfile();applyProfilePriority();
   document.body.classList.remove('entry-pending');
