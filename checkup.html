@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..800&display=swap">
-<title>renza. free — Panorama del negocio v0.5</title>
+<title>renza. free — Panorama del negocio v0.6</title>
 <style>
 :root{
   color-scheme:light;
@@ -411,7 +411,7 @@ html[data-theme="dark"] .info-callout{
 .trend-change{min-height:22px;margin:7px 0 10px;color:var(--positive);font-size:.78rem;font-weight:700}
 .trend-change.is-down{color:var(--negative)}.trend-change.is-neutral{color:var(--muted)}
 .trend-scroll{min-width:0;min-height:0;flex:1;overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain;scrollbar-width:thin;scrollbar-color:var(--line) transparent}
-.trend-chart{height:100%;min-height:170px;min-width:420px;display:grid;grid-auto-flow:column;grid-auto-columns:68px;gap:12px;align-items:stretch;padding:8px 5px 3px;margin:0;list-style:none}
+.trend-chart{height:100%;min-height:170px;width:max-content;min-width:100%;display:grid;grid-auto-flow:column;grid-auto-columns:68px;gap:12px;align-items:stretch;padding:8px 5px 3px;margin:0;list-style:none}
 .trend-month{min-width:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:8px;text-align:center}
 .trend-track{position:relative;min-height:126px;border-bottom:1px solid var(--line)}
 .trend-bar{position:absolute;left:50%;bottom:0;width:28px;min-height:4px;border-radius:7px 7px 3px 3px;background:var(--bar);transform:translateX(-50%)}
@@ -490,7 +490,7 @@ html[data-theme="dark"] .info-callout{
   .summary-ring{width:112px}.summary-ring::before{inset:20%}.summary-ring-center strong{font-size:.78rem}.summary-ring-center span{font-size:.52rem}
   .summary-stats{gap:8px;margin-top:16px}.summary-stat{padding:12px}.summary-value{font-size:1.42rem}.summary-share{font-size:.66rem}
   .trend-card{width:100%;height:auto;aspect-ratio:auto;padding:18px;align-self:start}.trend-current{font-size:2rem}.trend-change{margin-bottom:5px}
-  .trend-chart{min-height:135px;min-width:390px;grid-auto-columns:62px;gap:10px}.trend-track{min-height:96px}
+  .trend-chart{min-height:135px;grid-auto-columns:62px;gap:10px}.trend-track{min-height:96px}
   .dashboard-grid{gap:12px}.panel,.result-route,.tax-panel{padding:16px}
   .panel-head{gap:10px;margin-bottom:14px}.panel-title{font-size:.92rem}.panel-copy{font-size:.76rem;line-height:1.4}
   .result-route .panel-head .eyebrow,.panel-tag{display:none}
@@ -674,13 +674,43 @@ html[data-theme="dark"] .info-callout{
   .key{min-height:48px}
 }
 @media (prefers-reduced-motion:reduce){.toast,.cash-summary.is-updated .income-value,.cash-summary.is-updated .summary-value,.cash-summary.is-updated .summary-ring-center strong{animation:none}}
+
+/* Movimientos v0.6 · MM-B (registrar, revisar y corregir) */
+.movements-panel{scroll-margin-top:90px}
+.mov-list{display:grid;gap:18px;margin:0;padding:0;list-style:none}
+.mov-day-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:0 4px 8px;border-bottom:1px solid var(--line)}
+.mov-day-head h3{font-size:.8rem;font-weight:700;letter-spacing:.01em;text-transform:capitalize}
+.mov-day-total{min-width:0;color:var(--muted);font-size:.74rem;font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
+.mov-rows{margin:0;padding:0;list-style:none}
+.mov-row{
+  width:100%;min-height:60px;padding:10px 6px;display:grid;grid-template-columns:36px minmax(0,1fr) auto;align-items:center;gap:12px;
+  border:0;border-bottom:1px solid var(--line);border-radius:0;background:transparent;color:var(--text);text-align:left;cursor:pointer;
+  transition:background-color .14s ease
+}
+.mov-rows li:last-child .mov-row{border-bottom:0}
+.mov-row:hover{background:var(--surface-3)}
+.mov-icon{width:36px;height:36px;display:grid;place-items:center;border-radius:10px;background:var(--surface-2);color:var(--text)}
+.mov-icon.is-in{color:var(--positive)}
+.mov-icon svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.mov-text{min-width:0;display:grid;gap:2px}
+.mov-title,.mov-sub{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mov-title{font-size:.9rem;font-weight:650}
+.mov-sub{color:var(--muted);font-size:.76rem}
+.mov-amount{font-size:.98rem;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mov-more{width:100%;margin-top:14px}
+.danger-link{width:100%;min-height:44px;margin-top:6px;border:0;background:transparent;color:var(--negative);font-size:.88rem;font-weight:650;cursor:pointer}
+.danger-link:hover{text-decoration:underline;text-underline-offset:3px}
+@media (max-width:640px){
+  .mov-row{min-height:56px;padding:9px 2px;gap:10px}
+  .mov-day-head{padding:0 2px 8px}
+}
 </style>
 </head>
 <body class="entry-pending">
 <div class="app-shell">
   <header class="app-header">
     <a class="brand" href="#panorama" aria-label="renza. inicio">renza<span class="wordmark-dot">.</span></a>
-    <div class="product-name">Panorama del negocio <span class="version">v0.5</span></div>
+    <div class="product-name">Panorama del negocio <span class="version">v0.6</span></div>
     <div class="header-meta">
       <div class="period-chip"><span>Periodo</span><strong id="headerPeriod">Agosto 2026</strong></div>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Activar tema oscuro"><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.99 12.49A9 9 0 1 1 11.51 3a6 6 0 0 0 9.48 9.49Z"/></svg><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
@@ -747,6 +777,11 @@ html[data-theme="dark"] .info-callout{
       </section>
 
       <div class="dashboard-grid">
+        <section class="panel movements-panel" id="movimientos" aria-labelledby="movementsTitle" hidden>
+          <div class="panel-head"><div><p class="eyebrow">Tu registro</p><h2 class="panel-title" id="movementsTitle">Movimientos</h2><p class="panel-copy">Toca uno para corregirlo o cancelarlo.</p></div><span class="panel-tag" id="movementCount">0 movimientos</span></div>
+          <ol class="mov-list" id="movementList"></ol>
+          <button class="button button-secondary mov-more" id="movementMore" type="button" hidden>Ver más</button>
+        </section>
         <section class="panel pending-panel" id="pendientes" aria-labelledby="pendingTitle">
           <div class="panel-head"><div><p class="eyebrow">Qué hacer ahora</p><h2 class="panel-title" id="pendingTitle">Qué merece tu atención</h2><p class="panel-copy">El dinero que todavía debe entrar y lo que tienes por pagar.</p></div><span class="panel-tag">Atención Renza</span></div>
           <div class="pending-grid">
@@ -813,6 +848,7 @@ html[data-theme="dark"] .info-callout{
     <p class="form-error" id="formError" role="alert" hidden></p>
     <div class="keypad" role="group" aria-label="Teclado numérico"><button class="key" type="button" data-key="1">1</button><button class="key" type="button" data-key="2">2</button><button class="key" type="button" data-key="3">3</button><button class="key" type="button" data-key="4">4</button><button class="key" type="button" data-key="5">5</button><button class="key" type="button" data-key="6">6</button><button class="key" type="button" data-key="7">7</button><button class="key" type="button" data-key="8">8</button><button class="key" type="button" data-key="9">9</button><button class="key" type="button" data-key="." aria-label="Punto decimal">.</button><button class="key" type="button" data-key="0">0</button><button class="key" type="button" data-key="back" aria-label="Borrar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5a2 2 0 0 0-1.344.519l-6.328 5.74a1 1 0 0 0 0 1.481l6.328 5.741A2 2 0 0 0 10 19h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2z"/><path d="m12 9 6 6"/><path d="m18 9-6 6"/></svg></button></div>
     <button class="button save-button" type="submit" id="saveButton">Guardar</button>
+    <button class="danger-link" type="button" id="cancelMovement" hidden>Cancelar este movimiento</button>
     <p class="save-note">Se guarda solo en este navegador.</p>
   </form>
 </dialog>
@@ -940,21 +976,44 @@ html[data-theme="dark"] .info-callout{
     });
     return s;
   }
-  // Pendientes acumulados en orden cronológico. Un cobro o pago sin pendiente previo
-  // (p. ej. de antes de usar Renza) no deja saldo negativo ni descuenta pendientes futuros.
+  // Pendientes acumulados en orden cronológico. Lo que un cobro o pago excede a lo pendiente
+  // en su fecha (p. ej. una venta de antes de usar Renza) se acumula como excedente:
+  // no deja saldo negativo ni descuenta pendientes futuros.
   function pendingBalances(list){
     var sorted=list.slice().sort(function(a,b){
       if(a.date!==b.date){return a.date<b.date?-1:1}
       return a.createdAt<b.createdAt?-1:(a.createdAt>b.createdAt?1:0);
     });
-    var teDeben=0,debes=0;
+    var teDeben=0,debes=0,overflowCobro=0,overflowPago=0;
     sorted.forEach(function(m){
       if(m.kind==='venta'){teDeben+=m.amount-m.paidNow}
-      else if(m.kind==='cobro'){teDeben=Math.max(0,teDeben-m.amount)}
+      else if(m.kind==='cobro'){if(m.amount>teDeben){overflowCobro+=m.amount-teDeben;teDeben=0}else{teDeben-=m.amount}}
       else if(m.kind==='compra'){debes+=m.amount-m.paidNow}
-      else if(m.kind==='pago'){debes=Math.max(0,debes-m.amount)}
+      else if(m.kind==='pago'){if(m.amount>debes){overflowPago+=m.amount-debes;debes=0}else{debes-=m.amount}}
     });
-    return {teDeben:teDeben,debes:debes};
+    return {teDeben:teDeben,debes:debes,overflowCobro:overflowCobro,overflowPago:overflowPago};
+  }
+  // BR-COR-001: editar o cancelar una venta/compra no puede dejar cobros o pagos registrados
+  // "sin respaldo". Se compara el excedente antes y después del cambio propuesto.
+  function relationProblem(original,candidate){
+    if(original.kind!=='venta'&&original.kind!=='compra'){return ''}
+    var list=activeMovements();
+    var before=pendingBalances(list);
+    var next=list.filter(function(m){return m.id!==original.id});
+    if(candidate){next.push(candidate)}
+    var after=pendingBalances(next);
+    var cancelling=!candidate;
+    if(original.kind==='venta'&&after.overflowCobro>before.overflowCobro){
+      return cancelling
+        ?'Esta venta tiene cobros registrados después («Me pagaron»). Si la cancelas, ese dinero quedaría sin venta. Corrige o cancela primero el cobro.'
+        :'Ya tienes cobros registrados («Me pagaron») por esta venta. Con este cambio te habrían pagado más de lo que vendiste. Revisa el monto o corrige primero el cobro.';
+    }
+    if(original.kind==='compra'&&after.overflowPago>before.overflowPago){
+      return cancelling
+        ?'Esta compra tiene pagos registrados después («Pagué algo pendiente»). Si la cancelas, ese pago quedaría sin compra. Corrige o cancela primero el pago.'
+        :'Ya tienes pagos registrados («Pagué algo pendiente») por esta compra. Con este cambio habrías pagado más de lo que compraste. Revisa el monto o corrige primero el pago.';
+    }
+    return '';
   }
   function buildHistory(list,currentMk){
     if(!list.length){return []}
@@ -1047,6 +1106,87 @@ html[data-theme="dark"] .info-callout{
       ?'Cuando registres ventas y compras, aquí verás cómo se comparan.'
       :'Vender '+money(s.ventas)+' y gastar '+money(s.gastosNegocio)+' no es lo mismo que ganar la diferencia: parte de lo que compraste puede seguir en tu negocio. Para no darte un número equivocado, todavía no lo restamos.');
   }
+  /* ===== Lista de movimientos (MM-B) ===== */
+  var KIND_NAMES={venta:'Venta',compra:'Compra o gasto',cobro:'Me pagaron',pago:'Pagué algo pendiente',otro:'Otro movimiento'};
+  var KIND_ICONS={
+    venta:'<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>',
+    compra:'<path d="M4 2v20l2-2 2 2 2-2 2 2 2-2 2 2 2-2 2 2V2l-2 2-2-2-2 2-2-2-2 2-2-2-2 2Z"/><path d="M16 8h-6"/><path d="M16 12h-6"/>',
+    cobro:'<path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17"/><path d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 16 6 6"/><circle cx="16" cy="9" r="2.9"/><circle cx="6" cy="5" r="3"/>',
+    pago:'<path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/>',
+    otro:'<path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/>'
+  };
+  var WEEKDAYS=['dom','lun','mar','mié','jue','vie','sáb'];
+  var listLimit=20;
+  function isInKind(m){return m.kind==='venta'||m.kind==='cobro'||(m.kind==='otro'&&m.direction==='entrada')}
+  function describe(m){
+    var pending=m.amount-m.paidNow;
+    if(m.kind==='venta'){
+      if(m.status==='pendiente'){return 'Todavía no te pagan'}
+      if(m.status==='parcial'){return 'Te pagaron '+money(m.paidNow)+' · faltan '+money(pending)}
+      return 'Te pagaron todo';
+    }
+    if(m.kind==='compra'){
+      var who=m.purpose==='personal'?'Personal · ':'';
+      if(m.status==='pendiente'){return who+'Todavía no la pagas'}
+      var how=m.origin==='personal'?'con tu dinero':'con dinero del negocio';
+      if(m.status==='parcial'){return who+'Pagaste '+money(m.paidNow)+' '+how+' · faltan '+money(pending)}
+      return who+'Pagada '+how;
+    }
+    if(m.kind==='cobro'){return 'De algo que te debían'}
+    if(m.kind==='pago'){return m.origin==='personal'?'Con tu dinero':'Con dinero del negocio'}
+    return m.direction==='entrada'?'Entró dinero':'Salió dinero';
+  }
+  function dayLabel(dateKey){
+    if(dateKey===todayKey()){return 'Hoy'}
+    if(dateKey===yesterdayKey()){return 'Ayer'}
+    var p=dateKey.split('-').map(Number);
+    var d=new Date(p[0],p[1]-1,p[2]);
+    return WEEKDAYS[d.getDay()]+' '+p[2]+' '+MONTHS_SHORT[p[1]-1].toLowerCase()+(p[0]!==new Date().getFullYear()?' '+p[0]:'');
+  }
+  function newestFirst(a,b){
+    if(a.date!==b.date){return a.date<b.date?1:-1}
+    return a.createdAt<b.createdAt?1:(a.createdAt>b.createdAt?-1:0);
+  }
+  function renderMovements(list){
+    var panel=$('movimientos');
+    panel.hidden=list.length===0;
+    var container=$('movementList');container.replaceChildren();
+    if(!list.length){return}
+    var sorted=list.slice().sort(newestFirst);
+    setText('movementCount',sorted.length===1?'1 movimiento':sorted.length+' movimientos');
+    var dayTotals={};
+    sorted.forEach(function(m){var t=dayTotals[m.date]||(dayTotals[m.date]={entro:0,salio:0});t.entro+=cashIn(m);t.salio+=cashOut(m)});
+    var currentDay=null,rows=null;
+    sorted.slice(0,listLimit).forEach(function(m){
+      if(m.date!==currentDay){
+        currentDay=m.date;
+        var day=document.createElement('li');day.className='mov-day';
+        var head=document.createElement('div');head.className='mov-day-head';
+        var title=document.createElement('h3');title.textContent=dayLabel(m.date);
+        var totals=document.createElement('span');totals.className='mov-day-total';
+        var t=dayTotals[m.date];var parts=[];
+        if(t.entro){parts.push('Entró '+money(t.entro))}
+        if(t.salio){parts.push('Salió '+money(t.salio))}
+        totals.textContent=parts.join(' · ');
+        head.appendChild(title);head.appendChild(totals);
+        rows=document.createElement('ul');rows.className='mov-rows';
+        day.appendChild(head);day.appendChild(rows);container.appendChild(day);
+      }
+      var item=document.createElement('li');
+      var row=document.createElement('button');row.type='button';row.className='mov-row';row.setAttribute('data-id',m.id);
+      row.setAttribute('aria-label','Editar: '+KIND_NAMES[m.kind]+' de '+money(m.amount)+', '+dayLabel(m.date)+'. '+describe(m));
+      var icon=document.createElement('span');icon.className='mov-icon'+(isInKind(m)?' is-in':'');icon.setAttribute('aria-hidden','true');
+      icon.innerHTML='<svg viewBox="0 0 24 24">'+KIND_ICONS[m.kind]+'</svg>';
+      var text=document.createElement('span');text.className='mov-text';
+      var name=document.createElement('span');name.className='mov-title';name.textContent=m.note||KIND_NAMES[m.kind];
+      var sub=document.createElement('span');sub.className='mov-sub';sub.textContent=(m.note?KIND_NAMES[m.kind]+' · ':'')+describe(m);
+      text.appendChild(name);text.appendChild(sub);
+      var amount=document.createElement('span');amount.className='mov-amount';amount.textContent=money(m.amount);
+      row.appendChild(icon);row.appendChild(text);row.appendChild(amount);
+      item.appendChild(row);rows.appendChild(item);
+    });
+    $('movementMore').hidden=sorted.length<=listLimit;
+  }
   function render(){
     var list=activeMovements();
     var mk=monthOf(todayKey());
@@ -1057,6 +1197,7 @@ html[data-theme="dark"] .info-callout{
     var s=monthSummary(mk,list);
     renderBusinessSummary(s.entro,s.salio);
     renderTrend(buildHistory(list,mk));
+    renderMovements(list);
     var pending=pendingBalances(list);
     setText('cxcValue',money(pending.teDeben));setText('cxpValue',money(pending.debes));
     renderRoute(s);
@@ -1194,13 +1335,19 @@ html[data-theme="dark"] .info-callout{
   var draft=null;
   var amountStr='';
   var lastTrigger=null;
+  var editingId=null;
   var KIND_COPY={
-    venta:{title:'Vendí algo',amount:'¿Por cuánto vendiste?',status:'¿Ya te pagaron?',partial:'¿Cuánto te pagaron?',hint:''},
-    compra:{title:'Compré o gasté',amount:'¿Cuánto fue?',status:'¿Ya lo pagaste?',partial:'¿Cuánto pagaste?',hint:''},
-    cobro:{title:'Me pagaron',amount:'¿Cuánto te pagaron?',hint:'De algo que te debían. No cuenta como venta nueva.'},
-    pago:{title:'Pagué algo pendiente',amount:'¿Cuánto pagaste?',hint:'De algo que debías. No cuenta como compra nueva.'},
-    otro:{title:'Otro movimiento',amount:'¿Cuánto fue?',hint:'Préstamo, aportación, retiro… No cuenta como venta ni como gasto.'}
+    venta:{title:'Vendí algo',editTitle:'Editar venta',amount:'¿Por cuánto vendiste?',status:'¿Ya te pagaron?',partial:'¿Cuánto te pagaron?',hint:''},
+    compra:{title:'Compré o gasté',editTitle:'Editar compra o gasto',amount:'¿Cuánto fue?',status:'¿Ya lo pagaste?',partial:'¿Cuánto pagaste?',hint:''},
+    cobro:{title:'Me pagaron',editTitle:'Editar cobro',amount:'¿Cuánto te pagaron?',hint:'De algo que te debían. No cuenta como venta nueva.'},
+    pago:{title:'Pagué algo pendiente',editTitle:'Editar pago',amount:'¿Cuánto pagaste?',hint:'De algo que debías. No cuenta como compra nueva.'},
+    otro:{title:'Otro movimiento',editTitle:'Editar movimiento',amount:'¿Cuánto fue?',hint:'Préstamo, aportación, retiro… No cuenta como venta ni como gasto.'}
   };
+  var EDITABLE=['amount','paidNow','status','purpose','origin','direction','date','note'];
+  function snapshot(m){var s={};EDITABLE.forEach(function(k){s[k]=m[k]===undefined?null:m[k]});return s}
+  function sameSnapshot(a,b){return EDITABLE.every(function(k){return a[k]===b[k]})}
+  function findMovement(id){return store.movements.find(function(m){return m.id===id})||null}
+  function centsToInput(cents){var whole=Math.floor(cents/100),frac=cents%100;return frac?whole+'.'+pad(frac):String(whole)}
   function segmentedGroup(field){return stepAmount.querySelector('.segmented[data-field="'+field+'"]')}
   function setPressed(group,value){
     group.querySelectorAll('button[data-value]').forEach(function(button){button.setAttribute('aria-pressed',String(button.getAttribute('data-value')===value))});
@@ -1241,24 +1388,46 @@ html[data-theme="dark"] .info-callout{
     if(typeof registerDialog.showModal==='function'){registerDialog.showModal()}else{registerDialog.setAttribute('open','')}
     window.requestAnimationFrame(function(){var first=stepType.querySelector('.type-option');if(first){first.focus()}});
   }
+  function openEdit(id,trigger){
+    var movement=findMovement(id);if(!movement||movement.voidedAt){return}
+    lastTrigger=trigger||null;expandBottomNav();hideToast();
+    startDraft(movement.kind,movement);
+    if(typeof registerDialog.showModal==='function'){registerDialog.showModal()}else{registerDialog.setAttribute('open','')}
+  }
   function onRegisterClosed(){
-    draft=null;amountStr='';hideError();
+    draft=null;amountStr='';editingId=null;hideError();
     if(lastTrigger&&document.contains(lastTrigger)&&!lastTrigger.closest('[hidden]')){lastTrigger.focus({preventScroll:true})}
     lastTrigger=null;
   }
   function closeRegister(){
     if(typeof registerDialog.close==='function'){registerDialog.close()}else{registerDialog.removeAttribute('open');onRegisterClosed()}
   }
-  function startDraft(kind){
+  // Sin "movement": registro nuevo. Con "movement": edición del mismo tipo (el tipo no cambia;
+  // si el tipo estaba mal, se cancela y se registra de nuevo).
+  function startDraft(kind,movement){
     var copy=KIND_COPY[kind];
-    draft={kind:kind,status:(kind==='venta'||kind==='compra')?'total':null,purpose:kind==='compra'?'negocio':null,origin:(kind==='compra'||kind==='pago')?'negocio':null,direction:null,dateMode:'hoy',date:todayKey()};
-    amountStr='';
-    setText('amountTitle',copy.title);setText('amountLabel',copy.amount);
+    var m=movement||null;
+    var isDeal=kind==='venta'||kind==='compra';
+    editingId=m?m.id:null;
+    draft={
+      kind:kind,
+      status:isDeal?(m?m.status:'total'):null,
+      purpose:kind==='compra'?(m&&m.purpose?m.purpose:'negocio'):null,
+      origin:(kind==='compra'||kind==='pago')?(m&&m.origin?m.origin:'negocio'):null,
+      direction:kind==='otro'&&m?m.direction:null,
+      dateMode:'hoy',date:m?m.date:todayKey()
+    };
+    draft.dateMode=draft.date===todayKey()?'hoy':(draft.date===yesterdayKey()?'ayer':'otra');
+    amountStr=m?centsToInput(m.amount):'';
+    setText('amountTitle',m?copy.editTitle:copy.title);setText('amountLabel',copy.amount);
     var hint=$('amountHint');hint.textContent=copy.hint;hint.hidden=!copy.hint;
     if(copy.status){setText('statusLabel',copy.status);setText('partialLabel',copy.partial)}
-    $('partialInput').value='';$('noteInput').value='';
+    $('partialInput').value=m&&m.status==='parcial'?centsToInput(m.paidNow):'';
+    $('noteInput').value=m?(m.note||''):'';
     $('noteInput').placeholder=kind==='otro'?'¿Qué fue? Ej. préstamo':'Nota (opcional)';
     var dateInput=$('dateInput');dateInput.max=todayKey();dateInput.value=draft.date;
+    $('registerBack').hidden=!!m;$('cancelMovement').hidden=!m;
+    setText('saveButton',m?'Guardar cambios':'Guardar');
     hideError();updateAmountDisplay();syncQuestions();showStep('amount');
     window.requestAnimationFrame(function(){$('amountDisplay').focus()});
   }
@@ -1313,31 +1482,77 @@ html[data-theme="dark"] .info-callout{
     if(!/^\d{4}-\d{2}-\d{2}$/.test(date||'')){showError('Elige una fecha válida.');return}
     if(date>todayKey()){showError('La fecha no puede ser después de hoy.');return}
     var isDeal=draft.kind==='venta'||draft.kind==='compra';
+    var editing=editingId?findMovement(editingId):null;
     var paidNow=amount;
     if(isDeal&&draft.status==='pendiente'){paidNow=0}
     if(isDeal&&draft.status==='parcial'){
       var partial=parseCents($('partialInput').value);
       if(!partial||!Number.isSafeInteger(partial)){showError(draft.kind==='venta'?'Escribe cuánto te pagaron.':'Escribe cuánto pagaste.');return}
-      if(partial>=amount){showError('Debe ser menor a '+money(amount)+'. Si fue todo, elige «Sí, todo».');return}
+      if(partial>=amount){
+        if(editing&&editing.paidNow===partial&&amount<editing.amount){
+          showError(draft.kind==='venta'
+            ?'Ya registraste que te pagaron '+money(partial)+' por esta venta. No puede quedar en menos de eso. Si te equivocaste en lo cobrado, corrígelo en «Una parte».'
+            :'Ya registraste que pagaste '+money(partial)+' por esta compra. No puede quedar en menos de eso. Si te equivocaste en lo pagado, corrígelo en «Una parte».');
+        }else{showError('Debe ser menor a '+money(amount)+'. Si fue todo, elige «Sí, todo».')}
+        return;
+      }
       paidNow=partial;
     }
-    var movement={
-      id:newId(),kind:draft.kind,amount:amount,paidNow:paidNow,
+    var fields={
+      amount:amount,paidNow:paidNow,
       status:isDeal?draft.status:null,
       purpose:draft.kind==='compra'?draft.purpose:null,
       origin:(draft.kind==='pago'||(draft.kind==='compra'&&draft.status!=='pendiente'))?draft.origin:null,
       direction:draft.kind==='otro'?draft.direction:null,
-      date:date,note:$('noteInput').value.trim().slice(0,80),
-      createdAt:new Date().toISOString(),voidedAt:null
+      date:date,note:$('noteInput').value.trim().slice(0,80)
     };
+    if(editing){saveEdit(editing,fields);return}
+    var movement=Object.assign({id:newId(),kind:draft.kind},fields,{createdAt:new Date().toISOString(),voidedAt:null});
     $('saveButton').disabled=true;
     store.movements.push(movement);logEvent('crear',movement.id);persist();
     render();flashSummary();closeRegister();
-    showToast(toastFor(movement),movement.id);
+    showToast(toastFor(movement,SAVED_NAMES),function(){
+      if(!movement.voidedAt){movement.voidedAt=new Date().toISOString();movement.voidReason='deshacer';logEvent('cancelar',movement.id);persist();render()}
+      showToast('Movimiento cancelado.',null);
+    });
     $('saveButton').disabled=false;
   });
-  function toastFor(m){
-    var names={venta:'Venta guardada',compra:'Compra guardada',cobro:'Cobro guardado',pago:'Pago guardado',otro:'Movimiento guardado'};
+  function saveEdit(movement,fields){
+    var before=snapshot(movement);
+    var after=Object.assign({},before,fields);
+    if(sameSnapshot(before,after)){closeRegister();showToast('Sin cambios.',null);return}
+    var problem=relationProblem(movement,Object.assign({},movement,fields));
+    if(problem){showError(problem);return}
+    $('saveButton').disabled=true;
+    Object.assign(movement,fields,{updatedAt:new Date().toISOString()});
+    store.log.push({at:new Date().toISOString(),actor:'usuario',action:'editar',movementId:movement.id,before:before,after:snapshot(movement)});
+    persist();render();flashSummary();closeRegister();
+    showToast(toastFor(movement,UPDATED_NAMES),function(){
+      Object.assign(movement,before,{updatedAt:new Date().toISOString()});
+      store.log.push({at:new Date().toISOString(),actor:'usuario',action:'deshacer-edicion',movementId:movement.id,before:snapshot(movement),after:before});
+      persist();render();showToast('Cambio deshecho.',null);
+    });
+    $('saveButton').disabled=false;
+  }
+  $('cancelMovement').addEventListener('click',function(){
+    var movement=editingId?findMovement(editingId):null;if(!movement){return}
+    var problem=relationProblem(movement,null);
+    if(problem){showError(problem);return}
+    movement.voidedAt=new Date().toISOString();movement.voidReason='cancelado';
+    logEvent('cancelar',movement.id);persist();render();closeRegister();
+    showToast(CANCELLED_NAMES[movement.kind]+' · ya no cuenta en tus cifras',function(){
+      movement.voidedAt=null;delete movement.voidReason;
+      logEvent('restaurar',movement.id);persist();render();showToast('Movimiento restaurado.',null);
+    });
+  });
+  $('movementList').addEventListener('click',function(event){
+    var row=event.target.closest('.mov-row');if(row){openEdit(row.getAttribute('data-id'),row)}
+  });
+  $('movementMore').addEventListener('click',function(){listLimit+=20;render()});
+  var SAVED_NAMES={venta:'Venta guardada',compra:'Compra guardada',cobro:'Cobro guardado',pago:'Pago guardado',otro:'Movimiento guardado'};
+  var UPDATED_NAMES={venta:'Venta actualizada',compra:'Compra actualizada',cobro:'Cobro actualizado',pago:'Pago actualizado',otro:'Movimiento actualizado'};
+  var CANCELLED_NAMES={venta:'Venta cancelada',compra:'Compra cancelada',cobro:'Cobro cancelado',pago:'Pago cancelado',otro:'Movimiento cancelado'};
+  function toastFor(m,names){
     var parts=[];
     var moneyIn=cashIn(m),moneyOut=cashOut(m),pending=m.amount-m.paidNow;
     if(moneyIn){parts.push('Entró '+money(moneyIn))}
@@ -1355,23 +1570,19 @@ html[data-theme="dark"] .info-callout{
     window.setTimeout(function(){summary.classList.remove('is-updated')},700);
   }
 
-  /* ===== Aviso con Deshacer (cancelación trazable, no borrado) ===== */
+  /* ===== Aviso con Deshacer (cancelaciones y cambios trazables, nunca borrado) ===== */
   var toastTimer=0;
-  var toastMovementId=null;
-  function showToast(text,movementId){
-    toastMovementId=movementId||null;
-    $('toastUndo').hidden=!toastMovementId;
+  var toastUndoFn=null;
+  function showToast(text,undoFn){
+    toastUndoFn=typeof undoFn==='function'?undoFn:null;
+    $('toastUndo').hidden=!toastUndoFn;
     $('toast').hidden=false;setText('toastText',text);
     window.clearTimeout(toastTimer);toastTimer=window.setTimeout(hideToast,6000);
   }
-  function hideToast(){$('toast').hidden=true;toastMovementId=null}
+  function hideToast(){$('toast').hidden=true;toastUndoFn=null}
   $('toastUndo').addEventListener('click',function(){
-    var movement=store.movements.find(function(m){return m.id===toastMovementId});
-    if(movement&&!movement.voidedAt){
-      movement.voidedAt=new Date().toISOString();movement.voidReason='deshacer';
-      logEvent('cancelar',movement.id);persist();render();
-    }
-    showToast('Movimiento cancelado.',null);
+    var undo=toastUndoFn;toastUndoFn=null;
+    if(undo){undo()}
   });
 
   /* ===== Explicaciones ===== */
