@@ -1,1 +1,13 @@
 HANDOFF-renza-contacto.md
+
+# local / sistema
+.DS_Store
+.venv/
+__pycache__/
+*.bak
+*.bak-*
+# internos (no publicar)
+pasted.txt.rtf
+renza+.xlsx
+HANDOFF-servicios-v3-consultoria.md
+PLAYBOOK-servicios-v3-consultoria.md
