@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..800&display=swap">
-<title>renza. free — Panorama del negocio v0.6</title>
+<title>renza. free — Panorama del negocio v0.7</title>
 <style>
 :root{
   color-scheme:light;
@@ -704,13 +704,32 @@ html[data-theme="dark"] .info-callout{
   .mov-row{min-height:56px;padding:9px 2px;gap:10px}
   .mov-day-head{padding:0 2px 8px}
 }
+
+/* Modo ejemplo v0.7 · MM-C (demo marcada y separada, BR-DEMO-001) */
+.summary-empty-actions{display:flex;flex-wrap:wrap;gap:10px}
+.demo-banner{
+  position:sticky;top:82px;z-index:15;margin:0 0 22px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  border:1px dashed var(--warning);border-radius:14px;background:var(--warning-soft);color:var(--text);box-shadow:0 8px 20px rgba(0,0,0,.06)
+}
+.demo-copy{min-width:0;flex:1 1 320px}
+.demo-tag{margin:0;color:var(--warning);font-size:.72rem;font-weight:750;letter-spacing:.1em;text-transform:uppercase}
+.demo-text{margin:4px 0 0;font-size:.86rem}
+.demo-actions{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.link-button{min-height:42px;padding:6px 10px;border:0;background:transparent;color:var(--text);font-size:.84rem;font-weight:650;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+body.is-demo .panel{border-style:dashed}
+@media (max-width:640px){
+  .demo-banner{position:static;margin-bottom:14px;padding:12px;gap:10px}
+  .demo-text{font-size:.78rem}
+  .demo-actions{width:100%}.demo-actions .button{flex:1 1 100%}
+  .summary-empty-actions{width:100%}.summary-empty-actions .button{flex:1 1 100%}
+}
 </style>
 </head>
 <body class="entry-pending">
 <div class="app-shell">
   <header class="app-header">
     <a class="brand" href="#panorama" aria-label="renza. inicio">renza<span class="wordmark-dot">.</span></a>
-    <div class="product-name">Panorama del negocio <span class="version">v0.6</span></div>
+    <div class="product-name">Panorama del negocio <span class="version">v0.7</span></div>
     <div class="header-meta">
       <div class="period-chip"><span>Periodo</span><strong id="headerPeriod">Agosto 2026</strong></div>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Activar tema oscuro"><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.99 12.49A9 9 0 1 1 11.51 3a6 6 0 0 0 9.48 9.49Z"/></svg><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
@@ -740,8 +759,12 @@ html[data-theme="dark"] .info-callout{
 
   <main class="main" id="panorama" tabindex="-1">
     <div class="content">
+      <div class="demo-banner" id="demoBanner" role="region" aria-label="Modo ejemplo" hidden>
+        <div class="demo-copy"><p class="demo-tag">Ejemplo · <span id="demoLabel">una tienda</span></p><p class="demo-text">Te mostramos un ejemplo basado en un negocio como el tuyo. Puedes probar a registrar movimientos: nada se guarda.</p></div>
+        <div class="demo-actions"><button class="button" type="button" id="demoToReal">Quiero verlo con mis números</button><button class="link-button" type="button" id="demoReset">Reiniciar</button><button class="link-button" type="button" id="demoExit">Salir del ejemplo</button></div>
+      </div>
       <div class="page-head">
-        <div><p class="eyebrow">Renza Free · Este mes</p><h1 id="dashboardTitle" tabindex="-1">Panorama de tu negocio</h1><p class="subtitle">Lo que entró y salió del dinero de tu negocio en <strong id="periodName">este mes</strong>.</p><p class="profile-context" id="profileContext" hidden></p><p class="scope-note">Solo cuenta lo que registras aquí. No es tu saldo en el banco ni tu ganancia.</p></div>
+        <div><p class="eyebrow" id="pageEyebrow">Renza Free · Este mes</p><h1 id="dashboardTitle" tabindex="-1">Panorama de tu negocio</h1><p class="subtitle">Lo que entró y salió del dinero de tu negocio en <strong id="periodName">este mes</strong>.</p><p class="profile-context" id="profileContext" hidden></p><p class="scope-note">Solo cuenta lo que registras aquí. No es tu saldo en el banco ni tu ganancia.</p></div>
         <button class="button register-trigger" id="registerButton" type="button" data-register><svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>Registrar movimiento</button>
       </div>
 
@@ -751,7 +774,7 @@ html[data-theme="dark"] .info-callout{
           <div class="summary-empty" id="summaryEmpty" hidden>
             <p class="summary-empty-title">Empieza con lo que pasó hoy.</p>
             <p class="summary-empty-copy">Registra una venta, una compra o un pago. Aquí verás cuánto entró, cuánto salió y cuánto te quedó.</p>
-            <button class="button register-trigger" type="button" data-register><svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>Registrar mi primer movimiento</button>
+            <div class="summary-empty-actions"><button class="button register-trigger" type="button" data-register><svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>Registrar mi primer movimiento</button><button class="button button-secondary" type="button" id="startDemo">Ver un ejemplo</button></div>
           </div>
           <div class="summary-filled" id="summaryFilled">
             <div class="cash-summary-body">
@@ -849,7 +872,7 @@ html[data-theme="dark"] .info-callout{
     <div class="keypad" role="group" aria-label="Teclado numérico"><button class="key" type="button" data-key="1">1</button><button class="key" type="button" data-key="2">2</button><button class="key" type="button" data-key="3">3</button><button class="key" type="button" data-key="4">4</button><button class="key" type="button" data-key="5">5</button><button class="key" type="button" data-key="6">6</button><button class="key" type="button" data-key="7">7</button><button class="key" type="button" data-key="8">8</button><button class="key" type="button" data-key="9">9</button><button class="key" type="button" data-key="." aria-label="Punto decimal">.</button><button class="key" type="button" data-key="0">0</button><button class="key" type="button" data-key="back" aria-label="Borrar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5a2 2 0 0 0-1.344.519l-6.328 5.74a1 1 0 0 0 0 1.481l6.328 5.741A2 2 0 0 0 10 19h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2z"/><path d="m12 9 6 6"/><path d="m18 9-6 6"/></svg></button></div>
     <button class="button save-button" type="submit" id="saveButton">Guardar</button>
     <button class="danger-link" type="button" id="cancelMovement" hidden>Cancelar este movimiento</button>
-    <p class="save-note">Se guarda solo en este navegador.</p>
+    <p class="save-note" id="saveNote">Se guarda solo en este navegador.</p>
   </form>
 </dialog>
 
@@ -942,9 +965,15 @@ html[data-theme="dark"] .info-callout{
       return {version:1,movements:parsed.movements.filter(validMovement),log:Array.isArray(parsed.log)?parsed.log:[]};
     }catch(error){return emptyStore()}
   }
-  var store=readStore();
+  var realStore=readStore();
+  var store=realStore;
+  var demoMode=false;
   var storageOk=true;
-  function persist(){try{localStorage.setItem(STORE_KEY,JSON.stringify(store));storageOk=true}catch(error){storageOk=false}}
+  // El modo ejemplo vive solo en memoria: nunca se escribe en el almacenamiento real (BR-DEMO-001).
+  function persist(){
+    if(demoMode){storageOk=true;return}
+    try{localStorage.setItem(STORE_KEY,JSON.stringify(store));storageOk=true}catch(error){storageOk=false}
+  }
   function newId(){
     if(window.crypto&&typeof window.crypto.randomUUID==='function'){return window.crypto.randomUUID()}
     return 'm-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10);
@@ -1188,6 +1217,10 @@ html[data-theme="dark"] .info-callout{
     $('movementMore').hidden=sorted.length<=listLimit;
   }
   function render(){
+    document.body.classList.toggle('is-demo',demoMode);
+    $('demoBanner').hidden=!demoMode;
+    setText('pageEyebrow',demoMode?'Renza Free · Ejemplo':'Renza Free · Este mes');
+    setText('saveNote',demoMode?'Es un ejemplo: no se guarda.':'Se guarda solo en este navegador.');
     var list=activeMovements();
     var mk=monthOf(todayKey());
     var label=monthLabel(mk);
@@ -1612,6 +1645,73 @@ html[data-theme="dark"] .info-callout{
   infoDialog.addEventListener('click',function(event){if(event.target===infoDialog){closeInfo(true)}});
   infoDialog.addEventListener('cancel',function(event){event.preventDefault();closeInfo(true)});
   $('taxCta').addEventListener('click',function(){$('taxStatus').hidden=false});
+
+  /* ===== Modo ejemplo (MM-C · J-001 a J-006, BR-DEMO-001) ===== */
+  // Escenarios ficticios por tipo de negocio. Montos en pesos; fechas relativas al mes actual.
+  // [tipo, monto, opciones, día, nota]
+  var DEMO_SCENARIOS={
+    products:{label:'una tienda',months:[
+      [['venta',38500,{},28,'Ventas del mes'],['compra',24000,{},10,'Mercancía'],['compra',6500,{},5,'Renta del local'],['compra',1300,{},16,'Luz']],
+      [['venta',41200,{},28,'Ventas del mes'],['compra',25800,{},9,'Mercancía'],['compra',6500,{},5,'Renta del local'],['compra',1450,{},16,'Luz']],
+      [['compra',6500,{},3,'Renta del local'],['venta',9850,{},7,'Ventas de la semana'],['compra',12300,{status:'parcial',paid:8000},9,'Mercancía del proveedor'],['venta',4200,{status:'parcial',paid:2000},12,'Pedido para fiesta'],['venta',11300,{},14,'Ventas de la semana'],['cobro',1500,{},18,'Me pagaron lo del pedido'],['compra',380,{purpose:'personal'},19,'Comida (personal)']]
+    ]},
+    services:{label:'un negocio de servicios',months:[
+      [['venta',32000,{},28,'Servicios del mes'],['compra',4800,{},12,'Material'],['compra',3500,{},5,'Renta del taller']],
+      [['venta',29500,{status:'parcial',paid:24500},28,'Servicios del mes'],['compra',5200,{},12,'Material'],['compra',3500,{},5,'Renta del taller']],
+      [['compra',3500,{},3,'Renta del taller'],['venta',8500,{},6,'Mantenimiento a cliente'],['cobro',5000,{},8,'Me pagaron lo del mes pasado'],['venta',12000,{status:'pendiente'},11,'Proyecto para empresa'],['compra',1900,{},13,'Material'],['otro',2000,{direction:'salida'},15,'Retiro personal'],['venta',6200,{},18,'Servicios de la semana']]
+    ]},
+    both:{label:'una cocina económica',months:[
+      [['venta',45000,{},28,'Ventas del mes'],['compra',21000,{},10,'Insumos'],['compra',7000,{},5,'Renta'],['compra',2100,{},16,'Gas y luz']],
+      [['venta',47800,{},28,'Ventas del mes'],['compra',22400,{},10,'Insumos'],['compra',7000,{},5,'Renta'],['compra',2300,{},16,'Gas y luz']],
+      [['compra',7000,{},3,'Renta'],['venta',13600,{},7,'Ventas de la semana'],['compra',9800,{},8,'Insumos'],['venta',5400,{status:'pendiente'},10,'Comidas para oficina a crédito'],['venta',14100,{},14,'Ventas de la semana'],['compra',3900,{origin:'personal'},15,'Insumos pagados con mi tarjeta'],['cobro',5400,{},18,'Me pagó la oficina']]
+    ]}
+  };
+  function buildDemoStore(){
+    var type=userProfile.business_type;
+    var scenario=DEMO_SCENARIOS[type]||DEMO_SCENARIOS.products;
+    var currentMk=monthOf(todayKey());
+    var today=new Date().getDate();
+    var base=Date.now()-3600000;
+    var seq=0;
+    var movements=[];
+    scenario.months.forEach(function(items,index){
+      var offset=index-(scenario.months.length-1);
+      var mk=addMonths(currentMk,offset);
+      var parts=mk.split('-').map(Number);
+      var lastDay=offset===0?today:new Date(parts[0],parts[1],0).getDate();
+      items.forEach(function(item){
+        var kind=item[0],amount=item[1]*100,opts=item[2];
+        var isDeal=kind==='venta'||kind==='compra';
+        var status=isDeal?(opts.status||'total'):null;
+        var paidNow=!isDeal?amount:(status==='total'?amount:(status==='pendiente'?0:opts.paid*100));
+        seq+=1;
+        movements.push({
+          id:'demo-'+seq,kind:kind,amount:amount,paidNow:paidNow,status:status,
+          purpose:kind==='compra'?(opts.purpose||'negocio'):null,
+          origin:(kind==='pago'||(kind==='compra'&&status!=='pendiente'))?(opts.origin||'negocio'):null,
+          direction:kind==='otro'?(opts.direction||'entrada'):null,
+          date:mk+'-'+pad(Math.min(item[3],lastDay)),note:item[4],
+          createdAt:new Date(base+seq*1000).toISOString(),voidedAt:null
+        });
+      });
+    });
+    return {version:1,movements:movements,log:[],label:scenario.label};
+  }
+  function enterDemo(){
+    store=buildDemoStore();demoMode=true;listLimit=20;hideToast();
+    setText('demoLabel',store.label);
+    render();
+    window.scrollTo(0,0);window.requestAnimationFrame(function(){$('demoToReal').focus({preventScroll:true})});
+  }
+  function exitDemo(){
+    // Regresa a tus datos reales sin copiar nada del ejemplo; el tipo de negocio ya vive en tu perfil.
+    store=realStore;demoMode=false;listLimit=20;hideToast();
+    render();
+  }
+  $('startDemo').addEventListener('click',enterDemo);
+  $('demoReset').addEventListener('click',function(){enterDemo();showToast('Ejemplo reiniciado.',null)});
+  $('demoExit').addEventListener('click',function(){exitDemo();window.requestAnimationFrame(function(){$('dashboardTitle').focus()})});
+  $('demoToReal').addEventListener('click',function(){exitDemo();openRegister($('registerButton'))});
 
   /* ===== Arranque ===== */
   render();
