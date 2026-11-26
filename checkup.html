@@ -713,12 +713,36 @@ body[data-current-view="negocio"] [data-view]:not([data-view~="negocio"]){displa
 .history-table tr.is-current th,.history-table tr.is-current td{font-weight:750}
 .history-table .is-negative{color:var(--negative)}
 .history-empty{margin:0;color:var(--muted)}
-.tax-card{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
-.tax-card-main{min-width:0;flex:1 1 320px;display:flex;align-items:flex-start;gap:14px}
-.tax-card-icon{width:40px;height:40px;flex:0 0 40px;display:grid;place-items:center;border-radius:12px;background:var(--surface-2);color:var(--text)}
+.tax-card{background:linear-gradient(135deg,var(--inverse),var(--inverse-2));color:var(--inverse-text);border-color:rgba(255,255,255,.08);box-shadow:var(--shadow-strong)}
+.tax-card .eyebrow{color:var(--inverse-muted)}
+.tax-card .panel-title{color:inherit}
+.tax-card .panel-copy{color:var(--inverse-muted)}
+.tax-card-main{min-width:0;display:flex;align-items:flex-start;gap:14px}
+.tax-card{container-name:tax;container-type:inline-size}
+.tax-card-body{min-width:0;flex:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,320px);grid-template-rows:auto auto auto 1fr;grid-template-areas:"eyebrow preview" "title preview" "copy preview" "actions preview";column-gap:32px}
+.tax-card-body>.eyebrow{grid-area:eyebrow}
+.tax-card-body>.panel-title{grid-area:title}
+.tax-card-body>.panel-copy{grid-area:copy}
+.tax-card-body>.tax-card-actions{grid-area:actions;align-self:start}
+.tax-card-body>.tax-preview{grid-area:preview;align-self:center;margin:0;max-width:none}
+@container tax (max-width:640px){
+  .tax-card-body{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-template-areas:"eyebrow" "title" "copy" "preview" "actions"}
+  .tax-card-body>.tax-preview{margin-top:16px;max-width:360px}
+}
+.tax-card-icon{width:40px;height:40px;flex:0 0 40px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.2);border-radius:12px;background:rgba(255,255,255,.06);color:var(--inverse-text)}
 .tax-card-icon svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.tax-card-actions{display:grid;justify-items:end;gap:6px}
-.tax-note{margin:0;color:var(--muted);font-size:.74rem}
+.tax-card-actions{display:grid;justify-items:start;gap:8px;margin-top:16px}
+.tax-note{margin:0;color:var(--inverse-muted);font-size:.74rem}
+.tax-preview{width:100%;max-width:360px;margin:16px 0 0;padding:6px 14px;border:1px solid rgba(255,255,255,.14);border-radius:12px;background:rgba(255,255,255,.05);font-size:.84rem;font-variant-numeric:tabular-nums}
+.tax-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 0}
+.tax-row dt{color:var(--inverse-muted)}
+.tax-row dd{margin:0}
+.tax-total{margin-top:4px;padding-top:12px;border-top:1px solid rgba(255,255,255,.32)}
+.tax-total dt{color:var(--inverse-text);font-weight:750}
+.tax-total .masked-value{color:var(--inverse-text);font-weight:750}
+.masked-value{color:var(--inverse-muted);letter-spacing:.18em;filter:blur(1.7px);user-select:none}
+.tax-card .tax-card-actions .button{background:var(--inverse-text);color:var(--inverse)}
+.tax-card .tax-card-actions .button:hover{background:#E5E5E5}
 .negocio-panel{display:grid;gap:20px}
 .negocio-panel .panel-head{margin-bottom:0}
 .setting{display:grid;gap:10px;padding-top:18px;border-top:1px solid var(--line)}
@@ -850,8 +874,9 @@ body[data-current-view="negocio"] [data-view]:not([data-view~="negocio"]){displa
           <div class="history-wrap"><table class="history-table" id="historyTable"><thead><tr><th scope="col">Mes</th><th scope="col">Entró</th><th scope="col">Salió</th><th scope="col">Te quedó</th></tr></thead><tbody id="historyBody"></tbody></table></div>
         </section>
         <section class="panel tax-card" id="impuestos" data-view="inicio" aria-labelledby="taxTitle">
-          <div class="tax-card-main"><span class="tax-card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11V8a5 5 0 0 1 10 0v3"/><rect x="4" y="11" width="16" height="10" rx="2"/></svg></span><div><p class="eyebrow">Siguiente paso</p><h2 class="panel-title" id="taxTitle">¿Cuánto vas a pagar de impuestos?</h2><p class="panel-copy">Renza Tax Monitoring lo estima cada mes según tu régimen. Desde $199/mes.</p></div></div>
-          <div class="tax-card-actions"><button class="button" id="taxCta" type="button" aria-describedby="taxDisclaimer"><span aria-hidden="true">🔒</span> Desbloquear Tax Monitoring</button><p class="tax-note" id="taxDisclaimer">Es una estimación, no una declaración. Renza Free no calcula impuestos.</p><p class="tax-note" id="taxStatus" role="status" hidden>Renza Tax Monitoring estará disponible próximamente.</p></div>
+          <div class="tax-card-main"><span class="tax-card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11V8a5 5 0 0 1 10 0v3"/><rect x="4" y="11" width="16" height="10" rx="2"/></svg></span><div class="tax-card-body"><p class="eyebrow">Siguiente paso</p><h2 class="panel-title" id="taxTitle">¿Cuánto vas a pagar de impuestos?</h2><p class="panel-copy">Renza Tax Monitoring lo estima cada mes según tu régimen. Desde $199/mes.</p>
+          <dl class="tax-preview" aria-label="Vista previa bloqueada de Tax Monitoring"><div class="tax-row"><dt>ISR estimado</dt><dd class="masked-value" aria-label="Valor bloqueado">••••••</dd></div><div class="tax-row"><dt>IVA estimado</dt><dd class="masked-value" aria-label="Valor bloqueado">••••••</dd></div><div class="tax-row tax-total"><dt>Total del mes</dt><dd class="masked-value" aria-label="Valor bloqueado">••••••</dd></div></dl>
+          <div class="tax-card-actions"><button class="button" id="taxCta" type="button" aria-describedby="taxDisclaimer"><span aria-hidden="true">🔒</span> Desbloquear Tax Monitoring</button><p class="tax-note" id="taxDisclaimer">Es una estimación, no una declaración. Renza Free no calcula impuestos.</p><p class="tax-note" id="taxStatus" role="status" hidden>Renza Tax Monitoring estará disponible próximamente.</p></div></div></div>
         </section>
         <section class="panel negocio-panel" id="negocio" data-view="negocio" aria-labelledby="negocioTitle">
           <div class="panel-head"><div><p class="eyebrow">Tu espacio</p><h2 class="panel-title" id="negocioTitle" tabindex="-1">Mi negocio</h2><p class="panel-copy">Ajustes, tu plan y tus datos.</p></div></div>
